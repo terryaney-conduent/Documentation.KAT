@@ -77,10 +77,13 @@
 </div>
 
 <h2 id="query-kpi">Work Items query KPI</h2>
-<p>A Work Items query turned on in <b>Settings &gt; Display &gt; Dashboard</b> gets a KPI tile listing its tasks in the query's own order: <b>ID</b>, <b>Changed</b> date and <b>Title</b>, led by the work item type's icon, with a long title cut short (hover it for the whole title). Above the list, the total number of tasks is followed by the query's <a href="#/work-items/reading-chips">threshold counts</a> (Critical, High Severity, Top Priority, High Priority and Old), each number colored the way its chip is on the Work Items page; a count of zero is left out. Click a row to select that query on the Work Items page and open the task; click elsewhere on the tile to just open the query.</p>
+<p>A Work Items query turned on in <b>Settings &gt; Display &gt; Dashboard</b> gets a KPI tile listing its tasks most recently changed first, the Work Items page's default order: <b>ID</b>, <b>Changed</b> date and <b>Title</b>, led by the work item type's icon, with a long title cut short (hover it for the whole title). Above the list, the total number of tasks is followed by the query's <a href="#/work-items/reading-chips">threshold counts</a> (Critical, High Severity, Top Priority, High Priority and Old), each number colored the way its chip is on the Work Items page; a count of zero is left out. Click a row to select that query on the Work Items page and open the task; click elsewhere on the tile to just open the query.</p>
 
 <h2 id="whats-happening">What's Happening</h2>
-<p>The list is built from the same facts the rail badges count, so a badge and its rows cannot disagree. There are two exceptions. The Pipeline badge counts approvals you can make, but approvals do not get rows of their own; they appear as chips on the release that has just deployed up to them. And a query set to <b>Exclude from What's Happening</b> (Settings &gt; Work Items) still badges, but lists nothing.</p>
+<p><a href="#/oe-schedule/dashboard">OE Schedule</a> is off by default. Turn on <strong>Show OE Schedule Information</strong> in <a href="#/settings/connections-oe-schedule">Settings &gt; Connections</a> to add its tile and the first Sentinel navigation item. The tile shows Clients, Peak Live, Live Today and all Upcoming windows, a daily sparkline, and independent expandable In OE Now and Upcoming lists. Five live and three upcoming clients show initially; Upcoming expands within the next-week/next-five pool, not all future windows. A red sparkline underline marks today. Click the tile or a client to open the schedule.</p>
+<p>The list and section rail badges use the same facts, but do not always count the same things. The Pipeline badge includes approvals, which appear as chips on a release rather than separate rows. A query excluded from What's Happening still badges. The global <a href="#/settings/work-items-whats-happening">What's Happening Display Counts</a> switches also affect this list only: Severity starts on; Priority and Old start off, without changing Work Items or query badges.</p>
+<p>Repository Status has its own <a href="#/settings/repository-status-whats-happening">What's Happening Display Counts</a> switches for behind, ahead and dirty repositories, all on by default. Behind is amber; ahead and dirty are red. A sync repository contributes to both behind and ahead. Each type groups separately above four repositories, and a grouped row counts once here. These switches leave Repository Status rail counts and other warnings unchanged.</p>
+<p>The <b>Dashboard</b> rail entry is different: its red and amber counts match this list's <b>need action</b> and <b>need attention</b> counts exactly. They count displayed rows, including one for a folded group, not underlying items or the sum of other rail badges. Dismissing an actionable row updates both counts together.</p>
 <p>Some rows describe a <b>state</b>: they stay while it is true and go when it is not. Others are <b>news</b>: they have a <b>&times;</b> and end on their own.</p>
 
 <table class="cc-help-table">
@@ -93,7 +96,7 @@
 	</tr>
 	<tr>
 		<td>Work item query</td>
-		<td>An item trips one of the query's enabled thresholds: critical or high severity, priority 1 or 2, or old.</td>
+		<td>An item trips a query threshold whose global display category is enabled: critical or high severity, priority 1 or 2, or old. Only enabled categories contribute to the row's label and tone.</td>
 		<td>Opens the query</td>
 		<td>While the item still trips it</td>
 		<td>No</td>
@@ -176,6 +179,13 @@
 		<td>No</td>
 	</tr>
 	<tr>
+		<td>OE Schedule</td>
+		<td>Active clients with days left and Upcoming clients from the tile's same next-week/next-five pool. Each group folds independently past five clients. Informational only: no badge or contribution to <em>N need you</em>.</td>
+		<td>Opens OE Schedule</td>
+		<td>While enabled with a configured endpoint and a successful, ready schedule</td>
+		<td>No</td>
+	</tr>
+	<tr>
 		<td>Warning</td>
 		<td>Each warning in the bar at the bottom of the window.</td>
 		<td>None</td>
@@ -235,13 +245,14 @@
 			<li>No edge means it is for your information only.</li>
 		</ul>
 	</li>
+	<li>Warning and danger rows also use <b>bold, tone-coloured main text</b>. Elapsed times stay muted and embedded chips keep their own colours.</li>
 	<li>The <b>icon</b> is the rail icon of the section the row belongs to, in that section's colour.</li>
 	<li><b>Environment chips</b> are coloured exactly as they are on the Pipeline page: the environment's own colour once deployed, while deploying (with a spinner) or waiting for approval, red when failed, and grey while queued.</li>
 	<li><b>Red text</b> on a row means an action you took was refused. Hover the row to read TFS's message.</li>
 </ul>
 
 <h2 id="rail-badges">Rail badges</h2>
-<p>A badge counts what in its section needs <b>you</b> and will still be true after a refresh. A badge is never grey: it takes the worst tone among the things it counts, using the colours above. Work Items and CalcEngines are the exceptions: they split their count into a red badge and an amber badge. A rail group's badges (shown while the group is closed) add up its entries' red and amber counts separately.</p>
+<p>A badge counts what in its section needs <b>you</b>. Dashboard, Work Items, CalcEngines and RBLe Balancer can split their counts into red and amber badges. A rail group's badges (shown while the group is closed) add up its entries' red and amber counts separately.</p>
 
 <table class="cc-help-table">
 	<tr>
@@ -273,7 +284,11 @@
 		<td>Nodes with failed jobs within <b>Failures within</b> days (red). A failed read does not count. Hover it to see each node's failures.</td>
 	</tr>
 	<tr>
-		<td>Dashboard, Site Metrics, Diagnostics</td>
+		<td>Dashboard</td>
+		<td>The rendered What's Happening rows needing action (red) or attention (amber), matching its header after folding and dismissal. Informational rows do not count.</td>
+	</tr>
+	<tr>
+		<td>Site Metrics, Diagnostics</td>
 		<td>Never badge.</td>
 	</tr>
 </table>
@@ -282,7 +297,7 @@
 	<li><b>!</b> means the section failed to load or is not signed in. Hover it to see why.</li>
 	<li>A <b>group</b> (Work Items, Releases, Sentinel) shows its children's red and amber totals separately while those children are hidden: collapsed or in icons mode.</li>
 	<li>Badges for the selected site (Pipeline and CalcEngines) clear the moment you change site, and come back when the new site loads.</li>
-	<li>In icons mode a badge becomes a coloured dot, so Work Items and CalcEngines can show both a red and an amber dot.</li>
+	<li>In icons mode each badge becomes a coloured dot; an entry with both counts shows red and amber dots.</li>
 	<li>Three animated dots on an entry are not a badge. They mean it is being checked: a query refreshing in the background, or Pipeline watching a build or release in flight, or a change you just made.</li>
 </ul>
 

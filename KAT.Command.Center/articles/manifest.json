@@ -6,6 +6,7 @@
 	{ "id": "release-pipeline", "title": "Releases · Pipeline", "group": "Command Center", "icon": "release" },
 	{ "id": "calcengine-pipeline", "title": "Releases · CalcEngines", "group": "Command Center", "icon": "calcengine" },
 	{ "id": "site-metrics", "title": "Site Metrics", "group": "Command Center", "icon": "metrics" },
+	{ "id": "oe-schedule", "title": "OE Schedule", "group": "Command Center", "icon": "sitescope" },
 	{ "id": "site-scope", "title": "Site Scope", "group": "Command Center", "icon": "sitescope" },
 	{ "id": "rble-balancer", "title": "RBLe Balancer", "group": "Command Center", "icon": "balancer" },
 	{ "id": "hangfire", "title": "Hangfire", "group": "Command Center", "icon": "hangfire" },

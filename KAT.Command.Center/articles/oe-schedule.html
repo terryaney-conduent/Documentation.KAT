@@ -1,0 +1,37 @@
+<header class="cc-help-article-header">
+	<h1>OE Schedule</h1>
+	<p class="cc-help-lede">See which clients are in Open Enrollment now, who starts next, and where the busiest days fall.</p>
+</header>
+
+<h2 id="turning-it-on">Turning It On</h2>
+<p>OE Schedule is <strong>off by default</strong>. In <a href="#/settings/connections-oe-schedule">Settings &gt; Connections</a>, turn on <strong>Show OE Schedule Information</strong> and save. OE Schedule becomes the first item under Sentinel, with a Dashboard tile and informational What's Happening rows.</p>
+<p>The saved default endpoint and <strong>Poll (hours)</strong> value of 8 are already filled in. The endpoint is a Sentinel base address, not an individual API route. Reads use your existing KAT Management sign-in and require Sentinel Access. The schedule covers all clients from that endpoint; it does not depend on the selected site.</p>
+<p>Turning the switch off removes the navigation item, tile and activity rows, stops reads, and discards the cached schedule. If the page was open, you return to the Dashboard. Leaving the endpoint blank while the switch is on instead keeps the navigation item and a link to Connections, but hides the tile and stops polling.</p>
+
+<h2 id="reading-the-schedule">Reading the Schedule</h2>
+<p><strong>Active</strong> means the client's start date is on or before today and its end date is on or after today. Both dates are included. <strong>Inactive</strong> includes future and ended windows; a pre-period does not make a client active. Today is your computer's local calendar date.</p>
+<p><strong>Clients Live Per Day</strong> shows the full schedule, with solid peak bars, shaded weekends and a red Today line. Separate peak periods are listed separately. Below it, <strong>OE Live Windows</strong> places each client's window on the calendar. Hover a row for its dates and optional periods.</p>
+<figure class="cc-help-shot">
+	<img src="media/oe-schedule-page.webp" alt="OE Schedule page with fictionalized client names, the Clients Live Per Day chart and OE Live Windows." width="1280" height="827" loading="lazy">
+</figure>
+<ul>
+	<li><strong>Name</strong> matches either the displayed name or client code.</li>
+	<li><strong>Show</strong> and the Active/Inactive chips share the same selection. Turning both statuses off leaves no matching rows.</li>
+	<li><strong>Pre-period</strong> draws the days before the start date. <strong>Correction Period</strong> draws the day after the end through the correction date. These choices hide segments and legend entries, not clients.</li>
+	<li><strong>Sort</strong> starts at Start ascending. Choose Name, Start or End; choosing the current field again reverses its direction.</li>
+</ul>
+<p>Filters and sorting change only the Gantt rows. Header counts, the daily chart, median and overall window always describe the full schedule. For an even number of windows, the median is the upper middle length. These choices last for the window and are not saved to Settings.</p>
+
+<h2 id="dashboard">Dashboard and What's Happening</h2>
+<p>The <strong>OE Schedule</strong> tile shows Clients, Peak Live, Live Today and Upcoming, followed by a daily sparkline. Its red underline marks today. The season year is the earliest start year plus one.</p>
+<figure class="cc-help-shot">
+	<img src="media/oe-schedule-kpi.webp" alt="Dashboard OE Schedule tile showing peak and active counts, two live fictionalized clients, and an empty Upcoming group." width="640" height="345" loading="lazy">
+</figure>
+<p><strong>In OE Now</strong> lists the earliest ending windows first, showing five initially. Days Left includes today; the final day reads <strong>Last day</strong>. <strong>Upcoming</strong> includes everyone starting within seven days; when fewer than five qualify, it fills with the next starts up to five. Three rows show initially. Each list has its own <strong>Show N More</strong> and <strong>Show Fewer</strong>; Upcoming expands only its eligible pool, while its callout counts all future windows.</p>
+<p>Click a tile or client row to open the page. <a href="#/settings/display">Settings &gt; Display &gt; Dashboard</a> can reorder or hide this tile without stopping polling.</p>
+<p>What's Happening uses the same Active clients and Upcoming pool. Each group folds into one row when it has more than five clients; hover for their details. These rows are informational, have no dismiss or write action, and never increase rail badges or <em>N need you</em>. Rows disappear while a read is loading or has failed.</p>
+
+<h2 id="refreshing">Refreshing and Failures</h2>
+<p>The schedule loads at startup when enabled, when you enable it or set an endpoint, and every <strong>Poll (hours)</strong> interval regardless of which page is visible. The accepted range is 1–168 hours. Refresh on the page or tile reads immediately; <code>F5</code> does so while the page is open. Concurrent reads are not duplicated.</p>
+<p>Cached counts update after local midnight or resume without waiting for another read. <em>As of</em> remains the time of the last successful response.</p>
+<p>An empty schedule says Sentinel has no Open Enrollment windows configured. Missing sign-in or denied access explains the access requirement; unreachable Sentinel explains the connection failure. If a prior successful schedule exists, it stays visible below the failure message until a read succeeds. No OE action writes to Sentinel.</p>

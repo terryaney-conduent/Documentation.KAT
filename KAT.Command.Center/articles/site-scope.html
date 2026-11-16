@@ -21,7 +21,7 @@
 <p>Each row is the site's grid row cut down to what the tile needs: its state dot, name and <a href="#/site-scope/history">History</a>, its average against its expected time, and its 1 Hour <a href="#/site-scope/alert-windows">alert</a> counts. The <strong>Avg vs Expected</strong> bar fills with the average; the tick in its middle is the site's expected time, so a bar past the tick is slower than that site should be, and the bar is full at twice the expected time. The bar and the number turn amber above the expected time and red above one and a half times it, as in the grid. A dash means Site Scope gives no expected time for that site. Counts read left to right as OK, Warn, Fail - a tone with nothing in it is left off rather than shown as a zero. Clicking a row navigates to the Site Scope page with the grid already filtered to that site, and the scope reset to <strong>All</strong> so the site being pointed at cannot be filtered back out.</p>
 
 <h2 id="reading-the-grid">Reading the grid</h2>
-<p>The badge in the section head counts the visible rows and breaks them down by state - worst first, and a state with nothing in it is left off rather than shown as a zero.</p>
+<p>The section head keeps the total site count, followed by left-anchored clickable <strong>Failing</strong>, <strong>Warning</strong> and <strong>Healthy</strong> status chips, then the source refresh time. The time truncates when space is tight; hover it for the full text. These counts describe the full reported list, not just filtered rows. Select one or more chips to filter; select one again to clear it. A selected chip that falls to zero after a refresh stays available to clear.</p>
 <p>Rows arrive worst first: failing sites at the top, then warnings, then healthy sites, alphabetical within each group. Anything that needs you is always the first thing you read, and a site only moves when its state changes. Each row's dot is that state; sites the page reports no data for are left out of the grid.</p>
 <p>In the sample below, the five warning sites (amber dots) lead and the healthy sites follow. A healthy site can still show an amber or red cell in its History - Lima, Golf and MikeEcho here - because the dot is the current state and History is the last six runs. Sort by <strong>History</strong> to bring those up.</p>
 
@@ -39,11 +39,11 @@
 <p>Hover a cell for its duration, the number of pages it walked and its state. The duration alone is not the story: a failure often returns <em>faster</em> than a healthy run because it stopped early, which is why the colour and not the number decides the row's state.</p>
 
 <h3 id="average">Average</h3>
-<p>The site's average round trip, hovering to show the expected round trip alongside it. Over expectation is what the page counts as slow.</p>
+<p>The site's average round trip, hovering to show the expected round trip alongside it. Over expectation is what the page counts as slow. Amber and red averages are bold in the grid, cards, details and Dashboard tile; neutral values keep their existing weight.</p>
 
 <h3 id="alert-windows">1 / 4 / 24 / 48 hours</h3>
-<p>Each window carries two groups: slowness on the left (warnings, then alerts) and failures on the right. They are cumulative counts over that window, so 48 hours is always at least 24, which is always at least 4. Hover anywhere in a window's column for a three-line tooltip - the window, then slowness, then failures.</p>
-<p>Every count reserves room for three digits whether it needs them or not, so the icons line up in one vertical run down the table and the ones digits line up in another. A count past 999 is shown as <strong>999</strong> with a red outline around it - hover the cell to read the real totals.</p>
+<p>Each window shows three aligned badges: slowness <strong>warnings</strong>, slowness <strong>alerts</strong>, then <strong>failures</strong>. Nonzero warnings are amber; alerts and failures are red. Every zero badge is dim, even beside an active count. These are cumulative counts over the window, so 48 hours is always at least 24, which is always at least 4.</p>
+<p>Counts above 99 display <strong>99!</strong> without widening the badges. Hover anywhere in the hour segment to see exact counts for its nonzero categories; an all-zero segment has no tooltip. The same badges and tooltips appear in cards, details and the Dashboard tile. Sorting always uses the uncapped counts.</p>
 
 <h2 id="filtering">Filtering</h2>
 <p>Two controls sit in the section head above the grid. The box narrows to sites whose name contains what you type. The drop-down beside it narrows by kind:</p>
@@ -51,7 +51,7 @@
 	<li><strong>Sites With Issues</strong> - only sites with something in the <strong>1 Hour</strong> column: a slow warning, a slow alert or a failure. The last hour, because that is the window that answers "is this happening now".</li>
 	<li><strong>PROD Sites</strong> / <strong>QA Sites</strong> - QA sites are the ones whose name starts with <code>QA_</code>.</li>
 </ul>
-<p>The two combine, and the header badge recounts itself against whatever is left, so it never disagrees with the rows underneath it. Like your sort, your filter survives a refresh.</p>
+<p>The name and Show filters combine with the status chips. Several selected statuses mean any of those statuses; a row must also match both other filters. Counts in the header stay unchanged, while the table footer reports the filtered total. These choices survive a refresh but are not saved across app restarts. Opening a site from the Dashboard clears status and Show restrictions so that site can be revealed.</p>
 
 <h2 id="sorting">Sorting</h2>
 <p>Click any header to sort by it; click it again to reverse. Each column starts in the direction you would actually want it - state and history start worst-first, counts start highest-first, site starts A-Z.</p>

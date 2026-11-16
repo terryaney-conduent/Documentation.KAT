@@ -26,6 +26,10 @@
 		},
 		{
 			"version": "3.1",
+			"frozen": true
+		},
+		{
+			"version": "3.2",
 			"frozen": false
 		}
 	],
@@ -110,6 +114,12 @@
 			"theme": "Maintenance release that fixes the old window staying open after installing an update.",
 			"maintenance": true,
 			"sha256": "CF7E7BA4320AE12924843BA682588A4EEC0ACBFAE9317A9114523645F56161E9"
+		},
+		{
+			"version": "3.2.0",
+			"date": "2026-11-16",
+			"theme": "OE Schedule adds an opt-in enrollment calendar, RBLe Balancer gains CPU history and clearer per-node load, Site Scope gets status filter chips and clearer alerts, and Work Items and Repository Status gain control over What's Happening.",
+			"sha256": "2E554D5AFC516501BF1D9A58C51A204801E60288404488F05711B90A63083FC7"
 		}
 	]
 }

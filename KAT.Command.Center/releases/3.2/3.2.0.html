@@ -1,0 +1,55 @@
+<section data-kind="story">
+	<h3>Open Enrollment at a Glance</h3>
+	<p><a href="#/oe-schedule">OE Schedule</a> brings the enrollment calendar into the first Sentinel navigation item. See the busiest days in Clients Live Per Day, then follow each client's window in OE Live Windows, including optional pre-period and correction segments. Filter or sort the client rows without losing the full-season picture above them.</p>
+	<figure>
+		<img src="media/releases/3.2.0/oe-schedule-page.webp" alt="OE Schedule page showing 13 fictionalized clients, the Clients Live Per Day chart, and OE Live Windows with phased windows." width="1501" height="970">
+	</figure>
+	<p>The <a href="#/oe-schedule/dashboard">Dashboard tile</a> shows who's live, who starts next and peak dates. What's Happening groups the same Active and Upcoming clients without adding to your action counts.</p>
+	<figure>
+		<img src="media/releases/3.2.0/oe-schedule-kpi.webp" alt="Dashboard OE Schedule tile with peak and active client counts, the daily chart, two live fictionalized clients, and an empty Upcoming group." width="737" height="397">
+	</figure>
+	<p>It is <strong>off by default</strong>. Turn on <strong>Show OE Schedule Information</strong> in <a href="#/settings/connections-oe-schedule">Settings &gt; Connections</a> when enrollment season arrives. The endpoint is already filled in and polling defaults to eight hours, with manual refresh whenever needed. Turning it off removes the navigation item, tile and activity rows and stops polling.</p>
+</section>
+
+<section data-kind="improvements" data-title="RBLe Balancer Improvements">
+	<ul>
+		<li>A new <strong>CPU Load</strong> chart follows Response Time, plotting each node's average CPU for the selected Requests period. It requires updated Balancer and Sentinel versions.</li>
+		<li>Response Time, CPU Load and Request Rate <a href="#/rble-balancer/charts">charts</a> all follow the selected Requests period, capped at 12 hours, and plot the point still being collected instead of waiting for it to finish.</li>
+		<li>Request Rate shows successful requests per hour, with <strong>Show Total</strong> and <strong>Show Extremes</strong> switches.</li>
+		<li>Charts always fit on one row. When three don't fit, a sticky <strong>Charts</strong> bar shows icon and arrow controls to move between them, two or one at a time.</li>
+		<li>Charts with no activity in the period now say so, rather than suggesting Balancer and Sentinel need updating.</li>
+		<li>Each <a href="#/rble-balancer/nodes">node</a> shows a request beam scaled to the busiest node, so load differences are visible at a glance: always in card views, and in the table and Dashboard tile when there is room.</li>
+		<li>Table CPU and memory meters line up after the longest node name, as they do on the Dashboard tile, and capacity always follows the node name.</li>
+		<li>Colored 60s Avg values are bold everywhere they appear; very slow averages in the table show as <code>9,999!ms</code> with the exact value in the tooltip.</li>
+	</ul>
+</section>
+
+<section data-kind="improvements" data-title="Site Scope Improvements">
+	<ul>
+		<li>The status counts in the header are now <a href="#/site-scope/filtering">filter chips</a>, like CalcEngines. Select one or more statuses to show only those sites; counts always describe the full list.</li>
+		<li>Warning and danger colors are easier to tell apart, particularly in light mode, in the history column and status chips.</li>
+		<li><a href="#/site-scope/alert-windows">Alerts</a> show separate badges for warnings, slowness alerts and failures in each hour. Quiet hours stay dim, counts above 99 show as <code>99!</code>, and the tooltip lists the exact counts.</li>
+	</ul>
+</section>
+
+<section data-kind="improvements" data-title="Repository Status Improvements">
+	<ul>
+		<li><a href="#/settings/repository-status-whats-happening">Settings &gt; Repository Status &gt; What's Happening Display Counts</a> lets you independently include repositories that are behind, ahead or dirty in the Dashboard list and counts. All three start on; turning one off leaves Repository Status rail counts, conflict notices and root warnings visible.</li>
+		<li><a href="#/tools/repository-status/whats-happening">Ahead and dirty repositories</a> now appear as red needs-action alerts; behind repositories remain amber. Each category counts a repository once across its checkouts and groups separately at five or more. A repository needing Sync counts once in both behind and ahead.</li>
+	</ul>
+</section>
+
+<section data-kind="improvements" data-title="Dashboard and Work Item Improvements">
+	<ul>
+		<li><a href="#/settings/work-items-whats-happening">Settings › Work Items › What's Happening Display Counts</a> chooses whether severity, priority and old thresholds add Work Items to What's Happening. Severity starts on, priority and old start off; rail badges still count every threshold.</li>
+		<li>Dashboard <a href="#/reading-dashboard/rail-badges">rail badges</a> now match What's Happening's action and attention counts.</li>
+	</ul>
+</section>
+
+<section data-kind="fixes">
+	<ul>
+		<li>Creating a <a href="#/hangfire/create-edit">Hangfire job</a> no longer replaces a job with the same ID created elsewhere during the upload; the rejection appears under Suffix.</li>
+		<li><a href="#/work-items/query-results">Work Items</a> reliably sorts newest changes first when no column sort is selected, with missing or invalid dates last.</li>
+		<li>Warning rows in <a href="#/tools/repository-status">Repository Status</a> and other tables retain their intended tint instead of turning pink in newer WebView versions.</li>
+	</ul>
+</section>

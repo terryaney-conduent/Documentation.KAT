@@ -3980,6 +3980,12 @@ rbl-config {
   background: var(--kcc-raised);
 }
 
+.kcc-tab-band-label {
+  padding: var(--kcc-space-2) var(--kcc-space-3);
+  color: var(--kcc-text);
+  font-weight: 600;
+}
+
 .kcc-tab {
   display: inline-flex;
   flex: none;
@@ -4197,7 +4203,7 @@ rbl-config {
 }
 
 :is(.kcc-tone-warning > .kcc-row-accent, .kcc-row-accent.kcc-tone-warning) > * {
-  --bs-table-bg: oklch(from color-mix(in oklab, var(--kcc-tone) 10%, var(--kcc-surface)) l calc(c * 2) h);
+  --bs-table-bg: oklab(from color-mix(in oklab, var(--kcc-tone) 10%, var(--kcc-surface)) l calc(a * 2) calc(b * 2));
 }
 
 .kcc-icon,
@@ -5340,8 +5346,8 @@ label:has(> :is(input[type=checkbox], input[type=radio]):not(:disabled)) {
 .kcc-history-cell {
   display: inline-block;
   flex: 0 0 auto;
-  width: 15px;
-  height: 15px;
+  width: 21.75px;
+  height: 21.75px;
   border-radius: 3px;
   border: 1px solid color-mix(in srgb, var(--kcc-tone, var(--kcc-muted)) 55%, transparent);
   background: color-mix(in srgb, var(--kcc-tone, var(--kcc-muted)) 26%, transparent);
@@ -5362,37 +5368,24 @@ label:has(> :is(input[type=checkbox], input[type=radio]):not(:disabled)) {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--kcc-tone, var(--kcc-muted)) 18%, transparent);
 }
 
-.kcc-ss-alert-ico,
-.kcc-ss-alert-n {
+.kcc-ss-alert-chip {
   flex: none;
-  height: 14px;
-  color: var(--kcc-muted);
-  opacity: 0.45;
+  min-width: 4ch;
+  min-height: 24px;
 }
 
-.kcc-ss-alert-ico {
-  width: 14px;
+.kcc-ss-alert-chip.kcc-is-empty {
+  opacity: 0.45;
 }
 
 .kcc-ss-alert-n {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   min-width: 3ch;
   font-size: var(--kcc-fs-xs);
   font-weight: 700;
   line-height: 1;
-}
-
-.kcc-ss-alerts :is(.kcc-tone-warning, .kcc-tone-danger) {
-  color: var(--kcc-tone);
-  opacity: 1;
-}
-
-.kcc-ss-alerts .kcc-is-over {
-  outline: 1px solid var(--kcc-danger);
-  outline-offset: 1px;
-  border-radius: var(--bs-border-radius-sm);
 }
 
 .kcc-bal-held :is(.kcc-bal-chart, .kcc-bal-reading, .kcc-bal-meters) {
@@ -5890,6 +5883,15 @@ label:has(> :is(input[type=checkbox], input[type=radio]):not(:disabled)) {
   align-items: center;
   justify-content: flex-end;
   gap: var(--kcc-space-2);
+}
+
+.kcc-oe-dot {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  flex: none;
+  border-radius: 50%;
+  background: var(--kcc-info);
 }
 
 .kcc-sh-root {

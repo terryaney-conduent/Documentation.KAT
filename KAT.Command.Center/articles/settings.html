@@ -12,7 +12,7 @@
 	<li><strong>Releases</strong> page: how release pipelines are polled, when finished What's Happening items fade, how CalcEngine downloads behave, and which CalcEngine checkouts are flagged.</li>
 	<li><strong>Work Items</strong> page: configure your work item queries and workflow used within the application.</li>
 	<li><strong>Grazer</strong> page: configure local search roots, exclusions, the file-size limit, ZIP/Git/Shared options, replacement confirmations and read-only replacements.</li>
-	<li><strong>Repository Status</strong> page: choose the folders searched for Git repositories, ignore patterns, background checks, branch display, confirmations and the default Commit message.</li>
+	<li><strong>Repository Status</strong> page: choose the folders searched for Git repositories, ignore patterns, background checks, branch display, What's Happening categories, confirmations and the default Commit message.</li>
 	<li><strong>Connections</strong> page: manage your application's connections to external services and data sources.</li>
 </ol>
 <p>Folder paths in <strong>Grazer</strong>, the <strong>Repository Status</strong> roots and the <strong>Release folder</strong> setting share an editable picker. Type or paste a path, use the up/down arrows and <code>Enter</code> to choose one of up to 25 immediate child-folder suggestions, or press the folder button beside the path; <code>Esc</code> closes the suggestions. These edits stay in the Settings draft until you choose <em>Save</em>; <em>Cancel</em> discards them. Editing a path does not run a Grazer search or rescan repositories; saving changed Repository Status roots does.</p>
@@ -200,6 +200,13 @@
 		<div class="cc-help-legend-copy">Comma-separated tags offered in <em>Edit Task</em>'s Tags list after the site's KAT tags.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<h3 class="cc-help-legend-copy" id="work-items-whats-happening">Work Items > What's Happening Display Counts</h3>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Include Severity / Priority / Old Threshold</div>
+		<div class="cc-help-legend-copy">Chooses which threshold categories contribute rows to the Dashboard's <a href="#/reading-dashboard/whats-happening">What's Happening</a> list across all queries. Severity starts on; Priority and Old start off. Disabled categories still contribute to Work Items and query rail badges. Each query's <em>Exclude from What's Happening</em> setting still takes precedence.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
 		<h3 class="cc-help-legend-copy" id="work-items-queries">Work Items > Queries</h3>
 	</div>
 	<div class="cc-help-legend-row">
@@ -305,6 +312,10 @@
 		<div class="cc-help-legend-copy">Shows remote branches as child rows when a repository is expanded. Off by default; local branches and linked worktrees remain available.</div>
 	</div>
 	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label" id="repository-status-whats-happening">What's Happening Display Counts</div>
+		<div class="cc-help-legend-copy">Include repositories that are behind, ahead or dirty in the Dashboard's What's Happening list and counts. All three switches start on and work independently. Behind is amber (needs attention); ahead and dirty are red (needs action). A sync repository counts once in both behind and ahead; dirty means uncommitted changes. Each type counts a repository once across its checkouts and folds separately above four repositories. These switches do not change Repository Status rail counts, conflict notices or root warnings.</div>
+	</div>
+	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Confirm Push, Pull, Sync and Worktree Delete</div>
 		<div class="cc-help-legend-copy">Each selected Git action asks before it runs. All are on by default and independent; a prompt's opt-out turns its switch off here, and you can turn it back on. Pull, Push and Sync ask one question naming the repository or how many there are. Commit always opens its review with the message field and changed-file list. A force push has no setting: it always opens its review and always carries its lease. With Confirm Worktree Delete off, deletes that lose no work just run; a delete that discards uncommitted files, abandons an unfinished operation, is on a detached HEAD, overrides a lock or is not proven merged into main still opens its review, and every check (unchanged since the review, and, without force, unlocked, clean and a reason to go) still applies; see <a href="#/tools/repository-status/worktree-cleanup">Deleting worktrees</a>.</div>
 	</div>
@@ -386,12 +397,27 @@
 		<h3 class="cc-help-legend-copy" id="connections-automatic-updates">Connections > Automatic Updates</h3>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Release folder</div>
-		<div class="cc-help-legend-copy">The shared folder the app watches for a newer build of itself. Blank uses the OneDrive folder shown as the placeholder.</div>
+		<div class="cc-help-legend-label">Release Folder</div>
+		<div class="cc-help-legend-copy">The shared folder the app watches for a newer build of itself. Required; it appears beside Poll (hours).</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Check every (hours)</div>
-		<div class="cc-help-legend-copy">How often that folder is checked; blank uses 8 hours. It is also checked once at startup, and whenever you press <em>Check for updates now</em> beneath it.</div>
+		<div class="cc-help-legend-label">Poll (hours)</div>
+		<div class="cc-help-legend-copy">How often that folder is checked: a whole number from 1 to 168, default 8. It is also checked once at startup, and whenever you press <em>Check for updates now</em> beneath it.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<h3 class="cc-help-legend-copy" id="connections-oe-schedule">Connections &gt; OE Schedule</h3>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Show OE Schedule Information</div>
+		<div class="cc-help-legend-copy"><strong>Off by default.</strong> Turn it on and save when you need <a href="#/oe-schedule">OE Schedule</a>. Off removes the navigation item, Dashboard tile and What's Happening rows, stops polling and discards the snapshot. Endpoint and Poll stay editable while off, so you can prepare their values before enabling the feature.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">OE Schedule Endpoint</div>
+		<div class="cc-help-legend-copy">The Sentinel base endpoint; the default is already supplied. Use an absolute http(s) URL without sign-in information. Blank keeps the enabled navigation item with a link back here, but hides the tile and stops reads. The schedule is independent of the selected site.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Poll (hours)</div>
+		<div class="cc-help-legend-copy">Default 8, from 1 to 168 whole hours. Polling runs whichever page is visible while Show is on and the endpoint is set. Manual Refresh reads now. Both values are validated on Save even when Show is off.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
 		<h3 class="cc-help-legend-copy" id="connections-documentation">Connections > Documentation</h3>
