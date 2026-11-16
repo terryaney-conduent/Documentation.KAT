@@ -103,6 +103,13 @@
 			"date": "2026-11-15",
 			"theme": "Hangfire brings background-job monitoring and management, the Dashboard's tiles (now including Work Items queries) can be ordered and hidden, Site Scope surfaces sites needing attention, and RBLe Balancer adds richer traffic monitoring and host controls.",
 			"sha256": "FD71F5B819ABA8249E09B708A0F44B85921E7E8B1CEB8D4EEC47C48CE1C328FC"
+		},
+		{
+			"version": "3.1.1",
+			"date": "2026-11-15",
+			"theme": "Maintenance release that fixes the old window staying open after installing an update.",
+			"maintenance": true,
+			"sha256": "CF7E7BA4320AE12924843BA682588A4EEC0ACBFAE9317A9114523645F56161E9"
 		}
 	]
 }
