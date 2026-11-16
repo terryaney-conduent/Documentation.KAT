@@ -13,12 +13,12 @@
 </div>
 
 <h2 id="kpi-tile">The KPI tile</h2>
-<p>The tile answers "is anything wrong right now" without reading a single number: a count per state, the two lists that matter in the last hour - what is slowest, and what is erroring - and along the bottom a strip with one cell per site, worst first.</p>
+<p>The tile answers "which sites should I look at" in five rows: a count per state, then every site with a warning or failure in its newest five History cells, worst History first. If fewer than five sites qualify, the slowest of the rest fill the list until five show (or every site does, when there are fewer than five). More than five problem sites are all listed.</p>
 
 <figure class="cc-help-shot">
-	<img src="media/site-scope-tile.webp" alt="Site Scope KPI tile showing the count of OK sites, the Slowest Last Hour and Errors Last Hour lists, and a strip of one cell per site." width="548" height="394" loading="lazy">
+	<img src="media/site-scope-tile.webp" alt="Site Scope KPI tile showing the count of sites per state, then five site rows, each with its state dot, name, History cells, a bar comparing its average response time with its expected time, and its 1 Hour alert counts." width="548" height="394" loading="lazy">
 </figure>
-<p>Hover any cell in the strip for the site name and its state, plus who is on call for it if anyone is. Counts read left to right as OK, Warn, Fail - a tone with nothing in it is left off rather than shown as a zero. Site names in the two lists are links: clicking one navigates to the Site Scope page with the grid already filtered to that site, and the scope reset to <strong>All</strong> so the site being pointed at cannot be filtered back out.</p>
+<p>Each row is the site's grid row cut down to what the tile needs: its state dot, name and <a href="#/site-scope/history">History</a>, its average against its expected time, and its 1 Hour <a href="#/site-scope/alert-windows">alert</a> counts. The <strong>Avg vs Expected</strong> bar fills with the average; the tick in its middle is the site's expected time, so a bar past the tick is slower than that site should be, and the bar is full at twice the expected time. The bar and the number turn amber above the expected time and red above one and a half times it, as in the grid. A dash means Site Scope gives no expected time for that site. Counts read left to right as OK, Warn, Fail - a tone with nothing in it is left off rather than shown as a zero. Clicking a row navigates to the Site Scope page with the grid already filtered to that site, and the scope reset to <strong>All</strong> so the site being pointed at cannot be filtered back out.</p>
 
 <h2 id="reading-the-grid">Reading the grid</h2>
 <p>The badge in the section head counts the visible rows and breaks them down by state - worst first, and a state with nothing in it is left off rather than shown as a zero.</p>

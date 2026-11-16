@@ -1,0 +1,42 @@
+<section data-kind="story">
+	<h3>Hangfire management</h3>
+	<p>The new <a href="#/hangfire">Hangfire</a> page shows the background jobs each Sentinel Hangfire node has run in the last day. Pick a node with <strong>Show</strong>, then read its <strong>Succeeded</strong>, <strong>Failed</strong> and <strong>Processing</strong> counts in the header, a 24-hour chart of succeeded and failed jobs, and two lists: <strong>Jobs</strong> and <strong>Recurring</strong>. Click a chip to show only those jobs, filter by ID or name, and open any row to see the states it passed through, the exception of a failed run and each run's console output.</p>
+	<figure>
+		<img src="media/releases/3.1.0/hangfire-page.webp" alt="The Hangfire page for the Evolution QA node, showing the Succeeded, Failed and Processing chips, the Show node picker and filter, the 24-hour chart and the Jobs list" width="1291" height="901">
+	</figure>
+	<p>Where Sentinel allows you, you can also act on them. <strong>Trigger Now</strong> runs a recurring job straight away, <strong>Delete Job</strong> removes a succeeded or failed job, and <strong>Delete Schedule</strong> removes a recurring schedule. <a href="#/hangfire/batch">Batch actions</a> let you tick many rows, review the list before confirming, and see a summary of what completed, failed or was skipped. You only see the actions your Sentinel permissions give you on that node.</p>
+	<p><a href="#/hangfire/create-edit">Create and Edit</a> share one form. Choose the client's job assembly, pick a job type, then set its schedule and inputs. Create will not reuse the ID of a job that already exists, and Edit starts from what is actually scheduled on the node.</p>
+	<p>A <a href="#/hangfire/kpi-tile">Hangfire tile</a> on the Dashboard, after Site Scope, shows one node at a time: its 24-hour completions, recent failures, jobs processing and recurring schedules. What's Happening flags a node with failed jobs or one that cannot be read. Add your nodes under <a href="#/settings/sentinel-hangfire">Settings › Sentinel · Hangfire</a>; with none configured the tile stays hidden.</p>
+	<figure>
+		<img src="media/releases/3.1.0/hangfire-tile.webp" alt="The Dashboard's Hangfire tile for Evolution QA, with 24h Completion, 2d Failures, Processing and Recurring counts above the 24-hour chart and dots to switch nodes" width="743" height="413">
+	</figure>
+</section>
+
+<section data-kind="story">
+	<h3>Your app, your view</h3>
+	<p>The Dashboard now shows what you care about, in the order you want it. <a href="#/settings/display">Settings › Display › Dashboard</a> lists every tile: each KPI, What's Happening and each of your Work Items queries. Drag a row by its grip (or focus the grip and press Alt+↑ or Alt+↓) to move it, and use its switch to show or hide it. KPIs are always half width, two to a row, and What's Happening always spans the full width, so an odd number of KPIs before it leaves a gap beside the last one. Hiding a tile only takes it off the Dashboard; its page keeps updating and its rail badge still tells you when something needs attention.</p>
+	<figure>
+		<img src="media/releases/3.1.0/display-settings.webp" alt="Settings › Display › Dashboard, listing each Dashboard tile with its icon, a show or hide switch and a drag grip, including the My To Do's, Recent Tasks and Spec Sheets Work Items queries" width="1188" height="1051">
+	</figure>
+	<p>Turn on a Work Items query to give it its own <a href="#/reading-dashboard/query-kpi">KPI tile</a>. It lists the query's tasks in their own order, each led by its work item type's icon, with the ID, Changed date and Title. Above the list, the total number of tasks is followed by the query's Critical, High Severity, Top Priority, High Priority and Old counts, colored the way they are on the Work Items page. Click a task to open it on the Work Items page, or anywhere else on the tile to open the query. New queries start hidden, so the Dashboard only changes when you choose.</p>
+</section>
+
+<section data-kind="improvements" data-title="Site Scope Improvements">
+	<ul>
+		<li>The <a href="#/site-scope/kpi-tile">Site Scope Dashboard tile</a> lists every site with a warning or failure in its latest five polls, followed by the slowest remaining sites when fewer than five need attention. Each row adds recent history, average response against expected time and one-hour alerts; click it to open that site in the filtered grid.</li>
+		<li>An “As of” time on the tile shows when Site Scope last refreshed.</li>
+	</ul>
+</section>
+
+<section data-kind="improvements" data-title="RBLe Balancer Improvements">
+	<ul>
+		<li>Choose Last 15 minutes, Last hour, Last 12 hours or Since start for request counts. The <a href="#/rble-balancer/request-counts">selected period</a> is shared by the Dashboard tile and page and applies to counts, rates, retries, rejections and transferred bytes. Set the default in Settings. Shorter windows require updated Balancer and Sentinel versions; older versions continue to report Since start and show unavailable where they lack windowed data.</li>
+		<li><a href="#/rble-balancer/charts">Charts</a> show response-time history for the selected period and successful request counts over the last 12 hours, available as soon as the balancer reports them rather than after Command Center collects samples.</li>
+		<li>Clearly labeled 60-second response averages replace the shorter sampling window; totals weight each node by its completed requests.</li>
+		<li>Compare traffic across nodes in a distribution bar, with host totals and a Farm Estimate for multi-host balancers.</li>
+		<li><a href="#/rble-balancer/nodes">Heavy and Stressed node states</a> flag elevated CPU or memory, and the Balancer picker’s warning dot reflects issues across all configured balancers.</li>
+		<li>Failure meters distinguish failures among a node’s last 50 requests from failures over the selected period.</li>
+		<li>After a failed poll, readings and charts dim to distinguish stale data while names and controls remain usable.</li>
+		<li>See whether a balancer service is Online, Draining or Drained. Users with King permission can take one or all hosts offline or bring them online; taking a host offline drains in-flight requests without stopping the service and affects every cluster on that host. Host controls require Balancer and Sentinel versions that support the service endpoints.</li>
+	</ul>
+</section>

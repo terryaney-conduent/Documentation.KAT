@@ -22,6 +22,10 @@
 		},
 		{
 			"version": "3.0",
+			"frozen": true
+		},
+		{
+			"version": "3.1",
 			"frozen": false
 		}
 	],
@@ -93,6 +97,12 @@
 			"date": "2026-11-13",
 			"theme": "A new RBLe Balancer page arrives, and Work Item workflows, release management, Site Scope, Grazer, Repository Status, and shared controls are clearer and easier to use.",
 			"sha256": "23597B16CD9A6C681E5F76963B34F4246171E56CEE8CAB745DCF76BBFD65FA9F"
+		},
+		{
+			"version": "3.1.0",
+			"date": "2026-11-15",
+			"theme": "Hangfire brings background-job monitoring and management, the Dashboard's tiles (now including Work Items queries) can be ordered and hidden, Site Scope surfaces sites needing attention, and RBLe Balancer adds richer traffic monitoring and host controls.",
+			"sha256": "FD71F5B819ABA8249E09B708A0F44B85921E7E8B1CEB8D4EEC47C48CE1C328FC"
 		}
 	]
 }

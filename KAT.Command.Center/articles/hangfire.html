@@ -1,0 +1,81 @@
+<header class="cc-help-article-header">
+	<div class="cc-help-eyebrow">Command Center · 7 minute read</div>
+	<h1>Hangfire</h1>
+	<p class="cc-help-lede">The background jobs each Hangfire node has run in the last day: what succeeded, what failed and why, what is running now and which recurring schedules it holds - and, where Sentinel allows you, the controls to trigger, delete, create and edit them.</p>
+</header>
+
+<h2 id="what-it-shows">What it shows</h2>
+<p>Every job and schedule comes from Sentinel. Command Center signs in to each node's Sentinel endpoint with your KAT Management credentials (Settings &gt; Profile). It never talks to Hangfire directly.</p>
+<p>The nodes are the ones you add under <a href="#/settings/sentinel-hangfire">Settings &gt; Sentinel · Hangfire</a>. They do not depend on the selected site, and switching sites changes nothing here. Each node's summary is read every <strong>Refresh every</strong> seconds, whichever page is showing.</p>
+
+<h2 id="kpi-tile">The KPI tile</h2>
+<p>The Dashboard tile, titled <strong>Hangfire · {Name}</strong>, shows one node at a time. With more than one configured, the dots and arrows along its footer switch between them, and each dot takes the colour of its node's state. Clicking the tile opens this page on that node. With no nodes configured the tile is hidden, and this page points you to Settings.</p>
+<ul>
+	<li><strong>24h Completion</strong> - jobs that succeeded across the chart's 24 hours. The oldest hour may be partial.</li>
+	<li><strong>{N}d Failures</strong> - failed jobs within <strong>Failures within</strong> days (Settings), red when there are any. <em>100+</em> means at least that many; the page lists them all.</li>
+	<li><strong>Processing</strong> - jobs running now. <strong>Recurring</strong> - the node's recurring schedules.</li>
+	<li>The chart plots succeeded and failed jobs over the last 24 hours.</li>
+	<li>When a read fails, the tile shows why and when the node last answered.</li>
+</ul>
+
+<h2 id="reading-the-page">Reading the page</h2>
+<p><strong>Show node</strong> picks the node. The header chips <strong>Succeeded</strong> and <strong>Failed</strong> count that node's jobs; click one to show only those jobs, and click it again to show every job. <strong>Processing</strong> counts the jobs running now and is not a filter. <strong>Filter by ID or name</strong> narrows either list as you type.</p>
+<p>The chart plots succeeded and failed jobs over the last 24 hours. Click <strong>Succeeded</strong> or <strong>Failed</strong> below it to hide or show that line.</p>
+
+<h3 id="lists">Jobs and Recurring</h3>
+<p>Two tabs below the chart hold the lists. Click a column heading to sort. In a narrow window each row becomes a card and <strong>Sort</strong> joins the header.</p>
+<ul>
+	<li><strong>Jobs</strong> - the node's succeeded and failed jobs, newest first: <em>Job ID</em>, <em>Name</em>, <em>Finished</em>, <em>State</em> and <em>Duration</em>.</li>
+	<li><strong>Recurring</strong> - the recurring schedules: <em>ID</em>, <em>Cron</em> (hover for a description), <em>Created</em>, <em>Next Run</em>, <em>Last Run</em> and <em>Last State</em>. Last State shows <em>Succeeded</em> or <em>Failed</em> while Hangfire still holds the last job it started, and is blank once that job has expired or before the schedule first runs.</li>
+</ul>
+<p>The lists load when you open the page, change node, tab or filter, refresh, or finish an action. Between those, the chips, chart and tile keep refreshing but the rows do not.</p>
+<p>Move between rows with <code>j</code> / <code>k</code>. <code>Enter</code> opens a row's details, and <code>Space</code> opens its menu (or ticks it while choosing a batch).</p>
+
+<h3 id="details">Details</h3>
+<p>Click a row, press <code>Enter</code> on it, or choose <strong>Open</strong> from its menu.</p>
+<ul>
+	<li>A <strong>job</strong> shows its node, when it was created, its duration and the recurring schedule that started it. <strong>History</strong> lays out every state it passed through with the time spent in each, then the exception and stack trace of a failed run and the console output of each run, as Hangfire's dashboard shows it (with <strong>Copy</strong>). The newest run comes first; select <strong>Show outdated console</strong> to see an earlier run's output. <strong>Configuration</strong> lists its parameters and invocation XML.</li>
+	<li>A <strong>recurring job</strong> shows its cron, next and last run, when it was created and updated, and any schedule error. <strong>Last Run</strong> names the job it last started and how long that job ran, then its history, and <strong>Configuration</strong> its parameters. When the schedule has not run, or that job has expired, only Configuration is shown.</li>
+</ul>
+<p>The actions you can take on the item sit in the footer.</p>
+
+<h3 id="limits">Limits</h3>
+<ul>
+	<li>The Jobs list holds the newest 2,000 jobs. When a node has more, the footer reads <em>Newest 2,000 of N</em>; filter to find older ones.</li>
+	<li>A failed job's <em>Duration</em> stays blank in the list until Sentinel reports it. Its details still show how long its last run took.</li>
+</ul>
+
+<h2 id="actions">Actions</h2>
+<p>You only see the actions Sentinel's Hangfire permissions give you on that node, and some apply only to certain jobs. Sentinel checks again when the action runs. A row's menu opens from the <strong>…</strong> button at the start of its row.</p>
+<ul>
+	<li><strong>Trigger Now</strong> - runs a recurring job once now, outside its schedule. It is offered on the Recurring tab only.</li>
+	<li><strong>Edit</strong> - changes a recurring job (see <a href="#/hangfire/create-edit">Creating and editing</a>).</li>
+	<li><strong>Delete Job</strong> - removes a succeeded or failed job. This cannot be undone.</li>
+	<li><strong>Delete Schedule</strong> - removes a recurring schedule. Jobs it already queued are not deleted.</li>
+</ul>
+<p>Delete always asks you to confirm. Triggering a single schedule asks too, unless you choose <strong>Don't ask me to confirm triggers</strong>; turn it back on with <strong>Confirm Trigger</strong> in Settings. A batch trigger always asks.</p>
+
+<h3 id="batch">Batch actions</h3>
+<p>On the Jobs tab, <strong>Delete Jobs</strong> starts selecting jobs to delete. On the Recurring tab, <strong>Batch Action</strong> offers <strong>Trigger Now</strong> and <strong>Delete Schedules</strong>; its main button repeats the last one you chose.</p>
+<ol>
+	<li>Choose the action. Only rows it applies to get a checkbox, and row menus are hidden; tick them, or tick <strong>All</strong>.</li>
+	<li><strong>Continue</strong> lists what will change. Untick anything you want to leave, then confirm.</li>
+	<li>While it runs, the strip counts progress and failures. <strong>Cancel after current batch</strong> stops before the next group of jobs; anything already sent still applies.</li>
+</ol>
+<p>A schedule that was triggered shows a green <strong>Triggered</strong> beside its ID for a few seconds. Each job or schedule that did not succeed gets its own result on its row, with the reason: skipped (amber) when Sentinel passed over it or your access no longer allows it, failed (red) otherwise. Rows that were deleted, or were already gone, leave the list; triggering a schedule that was already deleted elsewhere also shows a warning above the list. A summary above the list counts what completed, failed, was skipped and never started.</p>
+<p>Nothing changes on the page until Sentinel answers; the list then reloads.</p>
+
+<h2 id="create-edit">Creating and editing</h2>
+<p><strong>Create</strong> appears on the Recurring tab when you may create jobs on the node. Both Create and Edit start by asking for the job assembly: an <code>Administration.{Client}.dll</code> in a site's <code>bin</code> folder. The browser opens in the Admin source folder (Settings), or the client's <code>bin</code> folder when editing. Command Center reads the assembly's job types without running it, and the client's <code>Configuration.xml</code> decides whether a job type is a <em>Report</em>. An assembly that cannot be used says why, and the form does not open: above the list for Create, on the job's row for Edit.</p>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row"><div class="cc-help-legend-label">Job Type, Suffix</div><div class="cc-help-legend-copy">Create only. The recurring ID is <code>{Client}.{Job Type}</code>, plus <code>.{Suffix}</code> when one is given (letters, digits, <code>_</code> or <code>-</code>) so one job type can run on several schedules.</div></div>
+	<div class="cc-help-legend-row"><div class="cc-help-legend-label">Cron</div><div class="cc-help-legend-copy">When it runs, in Central Standard Time. <strong>CRON Syntax Help</strong> opens a cron reference.</div></div>
+	<div class="cc-help-legend-row"><div class="cc-help-legend-label">Run as a QA Job</div><div class="cc-help-legend-copy">Tells the job it is running for the QA (test) site. Off by default.</div></div>
+	<div class="cc-help-legend-row"><div class="cc-help-legend-label">Process FTP</div><div class="cc-help-legend-copy">Report jobs only.</div></div>
+	<div class="cc-help-legend-row"><div class="cc-help-legend-label">Inputs</div><div class="cc-help-legend-copy">Name and value pairs passed to the job; a value can be text, <em>True</em> or <em>False</em>. Start a name with <code>@</code> to promote it to a root-level element. Names must be unique, valid XML names, and not one the job type already generates.</div></div>
+</div>
+<p><strong>Edit</strong> reads the job's current settings from Sentinel, so the form starts from what is actually scheduled. A job that was not created from a job package (for example one registered in code) can't be edited here.</p>
+<p><strong>Create</strong> will not use the ID of a job that already exists: the form says so under Suffix, so edit that job or choose a different suffix. <strong>Save</strong> on a job that was deleted elsewhere while you edited it creates it again. Once saved, the form closes and the list reloads with the job. If Sentinel rejects the job, the form stays open with the reason and nothing changes; if it does not answer, the change may still have applied, so check the list before trying again. The assembly you chose stays inside Command Center until it is sent, and is never saved or logged.</p>
+
+<h2 id="refreshing">When it refreshes</h2>
+<p>Every node is read every <strong>Refresh every</strong> seconds, whether or not the Dashboard or this page is showing. <span class="cc-help-chip">↻</span> and <code>F5</code> read now and reload the list. A failed read never raises a warning; the page and tile show it instead, and What's Happening lists a node that is unreachable, denied, not configured or failing to read Hangfire, or that has failed jobs within <strong>Failures within</strong> days.</p>

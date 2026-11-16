@@ -575,6 +575,7 @@ img {
 	display: block;
 	max-width: 100%;
 	height: auto;
+	margin-inline: auto;
 	border: 1px solid var(--kcc-border);
 	border-radius: var(--kd-radius)
 }
@@ -582,7 +583,8 @@ img {
 .kd-patch-part figcaption {
 	margin-top: 6px;
 	font-size: var(--kcc-fs-sm);
-	color: var(--kcc-muted)
+	color: var(--kcc-muted);
+	text-align: center
 }
 
 .kd-badge {

@@ -8,6 +8,7 @@
 	{ "id": "site-metrics", "title": "Site Metrics", "group": "Command Center", "icon": "metrics" },
 	{ "id": "site-scope", "title": "Site Scope", "group": "Command Center", "icon": "sitescope" },
 	{ "id": "rble-balancer", "title": "RBLe Balancer", "group": "Command Center", "icon": "balancer" },
+	{ "id": "hangfire", "title": "Hangfire", "group": "Command Center", "icon": "hangfire" },
 	{ "id": "tools/grazer", "title": "Grazer", "group": "Tools", "icon": "grazer" },
 	{ "id": "tools/repository-status", "title": "Repository Status", "group": "Tools", "icon": "repository" },
 	{ "id": "keyboard-shortcuts", "title": "Keyboard Shortcuts", "group": "Advanced", "icon": "dashboard" },

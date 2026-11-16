@@ -8,7 +8,7 @@
 
 <ol class="cc-help-workflow compact">
 	<li><strong>Profile</strong> page: your KAT Management site credentials, your Conduent network account, and a TFS Personal Access Token (PAT).</li>
-	<li><strong>Display</strong> page: adjust the appearance and layout of the application - theme, density and how the rail collapses.</li>
+	<li><strong>Display</strong> page: adjust the appearance and layout of the application - theme, density, how the rail collapses, and which Dashboard tiles show in what order.</li>
 	<li><strong>Releases</strong> page: how release pipelines are polled, when finished What's Happening items fade, how CalcEngine downloads behave, and which CalcEngine checkouts are flagged.</li>
 	<li><strong>Work Items</strong> page: configure your work item queries and workflow used within the application.</li>
 	<li><strong>Grazer</strong> page: configure local search roots, exclusions, the file-size limit, ZIP/Git/Shared options, replacement confirmations and read-only replacements.</li>
@@ -48,7 +48,7 @@
 </ol>
 
 <h3 id="providing-credentials">KAT Credentials</h3>
-<p>The KAT Management site credentials enable CalcEngines, Site Metrics and RBLe Balancer. The Conduent (AMERICAS) network account enables Site Scope.</p>
+<p>The KAT Management site credentials enable CalcEngines, Site Metrics, RBLe Balancer and Hangfire. The Conduent (AMERICAS) network account enables Site Scope.</p>
 <ol class="cc-help-workflow">
 	<li>Click the Settings button in KAT Command Center's app bar.</li>
 	<li>Enter your KAT DataStore and/or your Conduent username and password.</li>
@@ -71,7 +71,7 @@
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">KAT DataStore</div>
-		<div class="cc-help-legend-copy">Enter your KAT DataStore credentials here to enable CalcEngines, Site Metrics and RBLe Balancer.</div>
+		<div class="cc-help-legend-copy">Enter your KAT DataStore credentials here to enable CalcEngines, Site Metrics, RBLe Balancer and Hangfire.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Conduent</div>
@@ -106,7 +106,11 @@
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Navigation</div>
-		<div class="cc-help-legend-copy">What the rail's collapse button (at the left of the app bar) does. <em>Collapse to icons</em> leaves a strip of section icons; hovering or clicking a group there opens its entries beside it. <em>Hide completely</em> removes the rail so the content takes the full width, and the same button brings it back.</div>
+		<div class="cc-help-legend-copy">What the rail's collapse button (at the left of the app bar) does. <em>Collapse to icons</em> leaves a strip of section icons; hovering or clicking a group there opens its entries beside it. <em>Hide completely</em> removes the rail so the content takes the full width, and the same button brings it back. Whether the rail is collapsed, its width, and which rail groups are open are remembered when you close the app.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Dashboard</div>
+		<div class="cc-help-legend-copy">Which tiles the Dashboard shows, and in what order. Drag a row by its grip (or focus the grip and press Alt+&uarr; / Alt+&darr;) to move it, and use its switch to show or hide it. KPI tiles are always half width, two to a row, so an odd number of KPIs before <em>What's Happening</em> leaves a gap; <em>What's Happening</em> is always full width. Each Work Items query can also be shown as a KPI listing its tasks' ID, Changed date and Title; a new query starts hidden.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
 		<h3 class="cc-help-legend-copy" id="releases">Releases</h3>
@@ -340,6 +344,10 @@
 		<div class="cc-help-legend-copy">In the editor's Hosts section. The web servers running the balancer in this environment, comma separated: at least one, at most 25, each a plain host name without dots. Each must be the web server's machine name. The RBLe Balancer page reads the first one until you choose another in its Host picker, and node actions go to every one of them. A web server that answers but is not listed is reported as an unknown host.</div>
 	</div>
 	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Default Period</div>
+		<div class="cc-help-legend-copy">Under <em>Request Counts</em>. The period the Dashboard tile and the RBLe Balancer page use for request counts, req/s, retries and rejections: last 15 minutes, last hour (the default), last 12 hours or since start. Either can switch it until the app restarts without changing this setting; saving a different default replaces that choice.</div>
+	</div>
+	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Always replace existing files when downloading settings files</div>
 		<div class="cc-help-legend-copy">Under <em>View Settings Download</em>. View Settings saves a node's file to your Downloads folder as <code>{node}.{file name}</code>. On, an existing file of that name is replaced without asking; off, you are asked whether to replace it, save it somewhere else, or cancel. Off by default.</div>
 	</div>
@@ -350,6 +358,29 @@
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Show confirmation after downloading settings files</div>
 		<div class="cc-help-legend-copy">Show the saved path with Copy Path, Open Folder and Open File after each download. On by default. Not used while settings files open automatically.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<h3 class="cc-help-legend-copy" id="sentinel-hangfire">Sentinel · Hangfire</h3>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Hangfire Nodes</div>
+		<div class="cc-help-legend-copy">The Sentinel nodes shown on the Dashboard tile and the <a href="#/hangfire">Hangfire</a> page whichever site is selected. Each has a unique name and a unique <code>http://</code> or <code>https://</code> endpoint without a user name or password. Drag a node by its grip to reorder. Save signs in to each new or changed endpoint with your KAT Management credentials and reads its Hangfire summary, and stops with the reason when the endpoint cannot be reached, denies you or has no Hangfire configured. When every failure is one Sentinel could not confirm (it could not be reached, denied you, or failed some other way), <strong>Save anyway</strong> under the list saves without that check; the Hangfire page then reports any problem.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Refresh every (seconds)</div>
+		<div class="cc-help-legend-copy">How often each node's summary is read, whichever page is showing. 30 to 900; default 120.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Failures within (days)</div>
+		<div class="cc-help-legend-copy">How far back the Dashboard tile, What's Happening and the rail badge count failed jobs. 1 to 7; default 2.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Admin source folder</div>
+		<div class="cc-help-legend-copy">Under <em>Job Assemblies</em>. Where Create starts browsing for a job assembly. Required; default <code>C:\BTR\Evolution\Websites\Admin</code>.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Confirm Trigger</div>
+		<div class="cc-help-legend-copy">Under <em>Required Confirmations</em>. Trigger Now on a single schedule asks before it runs. On by default; the confirmation's opt-out turns it off here. A batch trigger and Delete always ask.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
 		<h3 class="cc-help-legend-copy" id="connections-automatic-updates">Connections > Automatic Updates</h3>

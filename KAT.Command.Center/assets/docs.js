@@ -46,6 +46,7 @@
 		sitescope: '<rect x="3" y="5" width="18" height="13" rx="2"/><path d="M6 12h2.5l1.5-3 2 6 1.5-3H18"/>',
 		balancer: '<path d="M12 3.3v17.4M7.5 20.7h9M3.9 6.9h16.2"/><circle cx="12" cy="3.9" r="1.35"/><path d="M3.9 6.9 1.8 12.9H6zM20.1 6.9l-2.1 6h4.2z"/><path d="M1.8 12.9a2.1 2.1 0 0 0 4.2 0M18 12.9a2.1 2.1 0 0 0 4.2 0"/>',
 		grazer: '<circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/>',
+		hangfire: '<path d="M12 2.5 20.2 7.25v9.5L12 21.5l-8.2-4.75v-9.5z"/><path d="M9 8v8M15 8v8M9 12h6"/>',
 		repository: '<circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="7" r="2"/><path d="M6 7v10M18 9a6 6 0 0 1-6 6H6"/>',
 		notes: '<path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4M9 11h6M9 15h6"/>',
 		help: '<circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.4 2.4 0 1 1 3.8 2c-1 .7-1.6 1.2-1.6 2.5M12 17h.01"/>'

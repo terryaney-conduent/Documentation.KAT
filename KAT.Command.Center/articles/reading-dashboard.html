@@ -5,7 +5,7 @@
 </header>
 
 <h2 id="dashboard-tour">Command Center at a glance</h2>
-<p>Select a numbered area to learn how it helps you read the dashboard and make informed decisions.</p>
+<p>Select a numbered area to learn how it helps you read the dashboard and make informed decisions. This is the default layout; <a href="#/settings/display">Settings &gt; Display &gt; Dashboard</a> reorders or hides any tile and can add a Work Items query as a KPI.</p>
 
 <div class="cc-help-tour" data-help-tour>
 	<div class="cc-help-tour-stage">
@@ -40,7 +40,7 @@
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="rail">
 			<span class="cc-help-tour-number">02</span>
 			<span><strong>Navigation Rail</strong><small>One entry per section. A badge counts what in it needs you.</small></span>
-			<span class="cc-help-tour-detail">Your saved work item queries sit under Work Items. Releases holds Pipeline and CalcEngines, Sentinel holds Site Scope, Site Metrics and RBLe Balancer, and Tools holds Grazer, Repository Status and the <a href="#/reading-dashboard/diagnostics">Diagnostics</a> menu. A badge is amber when something waits on you and red when it needs more urgent attention. See <em>Rail badges</em> below for what each one counts. The footer names the selected site's repository.</span>
+			<span class="cc-help-tour-detail">Your saved work item queries sit under Work Items. Releases holds Pipeline and CalcEngines, Sentinel holds Site Scope, Site Metrics, RBLe Balancer and Hangfire, and Tools holds Grazer, Repository Status and the <a href="#/reading-dashboard/diagnostics">Diagnostics</a> menu. A badge is amber when something waits on you and red when it needs more urgent attention. See <em>Rail badges</em> below for what each one counts. The footer names the selected site's repository.</span>
 		</button>
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="release-kpi">
 			<span class="cc-help-tour-number">03</span>
@@ -55,12 +55,13 @@
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="balancer-kpi">
 			<span class="cc-help-tour-number">05</span>
 			<span><strong>RBLe Balancer KPI</strong><small>One balancer's nodes: state, response time, load and share of traffic.</small></span>
-			<span class="cc-help-tour-detail">The header gives the request rate and counts nodes by state. Each node's row shows its average response time, CPU and memory meters, its share of traffic over the last 10 seconds and its gate. The dots and arrows switch balancers; click the tile to open RBLe Balancer. See <a href="#/rble-balancer/kpi-tile">The KPI tile</a>.</span>
+			<span class="cc-help-tour-detail">The header gives the host's service-health chip, request rate and node state counts. A total and colored distribution bar show requests across all nodes for the chosen period. Each row shows a colored node icon, CPU and memory meters, its gate, a separate Rate column, Requests and 60s Avg. CPU/memory at 70-90% makes a node Heavy; above 90% makes it Stressed, unless unhealthy or offline. The picker chooses the period for counts, distribution, req/s and Retried (15 minutes, an hour, 12 hours or since start); 60s Avg stays on the last minute. Failed polls dim all changing readings. The dots and arrows switch balancers; click the tile to open RBLe Balancer. See <a href="#/rble-balancer/kpi-tile">The KPI tile</a>.</span>
 		</button>
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="sitescope-kpi">
 			<span class="cc-help-tour-number">06</span>
-			<span><strong>Site Scope KPI</strong><small>One cell per monitored site, worst first.</small></span>
-			<span class="cc-help-tour-detail">Hover any cell to see the site, its state, and who is on call for it. The counts leave out any state with nothing in it. The slowest sites and the sites with errors in the last hour are links that open Site Scope filtered to that site.</span>
+			<span><strong>Site Scope KPI</strong><small>The sites to look at first: recent problems, then the slowest.</small></span>
+			<span class="cc-help-tour-detail">Every site with a warning or failure in its last five runs, then the slowest of the rest until five rows show. Each row has its state dot, History, average against its expected time, and 1 Hour alert counts; click a row to open Site Scope filtered to that site. The counts leave out any state with nothing in it. See <a href="#/site-scope/kpi-tile">The KPI tile</a>.</span>
+			<span class="cc-help-tour-detail"><b>As of</b> beside the counts is Site Scope's reported refresh time in your local time zone, not the time Command Center fetched it. It is hidden when the source provides no time. Command Center checks Site Scope every five minutes.</span>
 		</button>
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="metrics-kpi">
 			<span class="cc-help-tour-number">07</span>
@@ -74,6 +75,9 @@
 		</button>
 	</div>
 </div>
+
+<h2 id="query-kpi">Work Items query KPI</h2>
+<p>A Work Items query turned on in <b>Settings &gt; Display &gt; Dashboard</b> gets a KPI tile listing its tasks in the query's own order: <b>ID</b>, <b>Changed</b> date and <b>Title</b>, led by the work item type's icon, with a long title cut short (hover it for the whole title). Above the list, the total number of tasks is followed by the query's <a href="#/work-items/reading-chips">threshold counts</a> (Critical, High Severity, Top Priority, High Priority and Old), each number colored the way its chip is on the Work Items page; a count of zero is left out. Click a row to select that query on the Work Items page and open the task; click elsewhere on the tile to just open the query.</p>
 
 <h2 id="whats-happening">What's Happening</h2>
 <p>The list is built from the same facts the rail badges count, so a badge and its rows cannot disagree. There are two exceptions. The Pipeline badge counts approvals you can make, but approvals do not get rows of their own; they appear as chips on the release that has just deployed up to them. And a query set to <b>Exclude from What's Happening</b> (Settings &gt; Work Items) still badges, but lists nothing.</p>
@@ -163,6 +167,13 @@
 		<td>Opens RBLe Balancer on that balancer and host</td>
 		<td>Until you dismiss it here or on the page</td>
 		<td>Yes, until the app restarts</td>
+	</tr>
+	<tr>
+		<td>Hangfire</td>
+		<td>A node has failed jobs within <b>Failures within</b> days (Settings &gt; Sentinel · Hangfire), in red, or its last read failed (unreachable, denied, Hangfire not configured, or Sentinel could not read it), in amber. One row per node.</td>
+		<td>Opens Hangfire on that node</td>
+		<td>While it is</td>
+		<td>No</td>
 	</tr>
 	<tr>
 		<td>Warning</td>
@@ -256,6 +267,10 @@
 	<tr>
 		<td>RBLe Balancer</td>
 		<td>Its What's Happening rows: a red badge for unhealthy nodes, an amber badge for the rest. Each shows only when it is not zero.</td>
+	</tr>
+	<tr>
+		<td>Hangfire</td>
+		<td>Nodes with failed jobs within <b>Failures within</b> days (red). A failed read does not count. Hover it to see each node's failures.</td>
 	</tr>
 	<tr>
 		<td>Dashboard, Site Metrics, Diagnostics</td>
