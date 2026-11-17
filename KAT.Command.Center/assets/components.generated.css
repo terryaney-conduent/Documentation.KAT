@@ -4517,6 +4517,11 @@ svg.kcc-ctx-ico {
   height: 1rem;
 }
 
+.kcc-ctx-ico.kcc-logo {
+  width: 1rem;
+  height: 1rem;
+}
+
 .kcc-ctx-ico:not(.kcc-tfs) {
   color: var(--kcc-muted);
 }

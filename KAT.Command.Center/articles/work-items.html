@@ -68,13 +68,24 @@
 <ol class="cc-help-workflow compact">
 	<li>'Click to copy' ID and Title to easily share or use in commit comments and messages/emails</li>
 	<li>The banner carries who has it and how it got there - <em>Assigned To</em>, <em>Assigned By</em>, <em>Created By</em> and when it last changed - then the classification it was filed under: <em>Type / State</em>, <em>Priority / Severity</em>, and its tags.</li>
-	<li>The header's <strong>⋯</strong> menu holds <em>Edit Task</em>, <em>Triage</em>, <em>Return Task</em> and <em>Close Task</em>, then <em>View in TFS</em>, <em>Copy Link</em> and <em>Copy ID</em>. The row's <strong>⋯</strong> menu has the same actions.</li>
+	<li>The header's <strong>⋯</strong> menu holds <em>Edit Task</em>, <em>Triage</em>, <em>Return Task</em> and <em>Close Task</em>, then <em>View in TFS</em>, <em>Copy Link</em> and <em>Copy ID</em>, and, below a divider, <em>Share KCC Link</em> (see <a href="#/work-items/share-link">Share a work item</a>). The row's <strong>⋯</strong> menu has the same actions.</li>
 	<li>Attachment chips enable file download. If a task tag matches a spec sheet attachment, it will be displayed in a separate row for easy access.</li>
 	<li>Keyboard warriors rejoice. <a href="#/keyboard-shortcuts/work-item-detail">Keyboard Shortcuts</a> provide quick access to all the actions you need to manage a work item efficiently.</li>
 	<li>Comments show newest first with who wrote them and when (hover a time for the exact date). Click a person's avatar to show only their comments; click them again to show everyone. <em>Newest</em>/<em>Oldest</em> flips the order. A long description or repro steps is trimmed with a <em>Show full</em> link, such as <em>Show full repro steps</em>.</li>
 	<li>People show as coloured initials, replaced by their TFS profile photo a moment after the modal opens if they have one. The photos load in the background, so they never hold the comments up, and anyone without a photo simply keeps their initials.</li>
 	<li><em>Related Work</em>, <em>Commits</em> and <em>Builds</em> tabs show linked work items, associated commits and integrated builds; each tab shows its count.</li>
 	<li><em>History</em> shows how the item got where it is. Two lanes along the top trace its <em>State</em> and <em>Owner</em>, one stop per change with how long each lasted; a long lane collapses to <em>+N</em>, which expands it (<em>Show less</em> folds it back). Below, every save is listed newest first by day, with each field's old and new value and any link added or removed. One person's back-to-back saves show as one entry, led by "N saves"; the window is set in <a href="#/settings">Settings > Work Items > History</a>. A save that added a comment has a comment button that opens that comment on the <em>Details</em> tab. Links TFS added on its own, such as a build that integrated the item, are marked <em>automatic</em>.</li>
+</ol>
+
+<h2 id="share-link">Share a work item</h2>
+<p><em>Share KCC Link</em> is the last item in the <strong>⋯</strong> menu on a row and in Work Item Detail (or press <code>s</code>). It copies a link that opens that work item in KAT Command Center. Paste it into Teams or any rich-text box and it reads as <em>KCC #123456: Title</em>.</p>
+<p><strong>Notable Features</strong></p>
+<ol class="cc-help-workflow compact">
+	<li>Clicking the link opens a short page in the browser, which hands the work item to KAT Command Center. The first time, the browser asks whether to open KAT Command Center; choose to always allow it and later links open straight away.</li>
+	<li>KAT Command Center opens the work item's Detail over whichever page you are on. It starts first if it is not running, and a minimised window is brought back.</li>
+	<li>An open dialog is never interrupted. A notice says a shared link is waiting and offers <em>Open Work Item</em>, which becomes available when the dialog closes.</li>
+	<li>Pasted into a plain text box or the browser's address bar, the link is the web address instead of <em>KCC #123456: Title</em>.</li>
+	<li>Opening a link only shows the work item; it never changes it. Whoever clicks needs KAT Command Center installed and the usual TFS access.</li>
 </ol>
 
 <h2 id="comment-reassign">Edit, comment, reassign, or change State</h2>

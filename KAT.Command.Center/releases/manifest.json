@@ -127,6 +127,12 @@
 			"theme": "Maintenance release with no user-visible changes.",
 			"maintenance": true,
 			"sha256": "AE341B4A4269407B42DDC705B06B4AF09B1B2529BB5F663EFE82A09A1CD7870C"
+		},
+		{
+			"version": "3.2.2",
+			"date": "2026-11-17",
+			"theme": "Work Items can share a link that opens a work item straight into KAT Command Center.",
+			"sha256": "4390C8E500ABF36DED071ABE95B731917CA98D0E6F2A0639847E25B2420ED9D2"
 		}
 	]
 }

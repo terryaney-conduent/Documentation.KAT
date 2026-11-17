@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Open in KAT Command Center</title>
+<meta name="description" content="Opens a shared work item in KAT Command Center on this computer.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KAT Command Center">
+<meta property="og:title" content="Open this work item in KAT Command Center">
+<meta property="og:description" content="Opens the shared work item in KAT Command Center on your computer.">
+<meta property="og:image" content="https://terryaney-conduent.github.io/Documentation.KAT/KAT.Command.Center/media/app-icon.png">
+<link rel="icon" type="image/png" href="../media/app-icon.png">
+<script>
+	(function () {
+		var theme = null;
+		try { theme = localStorage.getItem('kcc-docs-theme'); } catch (e) { }
+		if (theme !== 'light' && theme !== 'dark') theme = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+		document.documentElement.setAttribute('data-theme', theme);
+	})();
+</script>
+<link rel="stylesheet" href="../assets/components.generated.css">
+<link rel="stylesheet" href="../assets/docs.css">
+<style>
+	.kd-open { max-width: 36rem; margin: 0 auto; padding: calc(var(--kd-topbar-h) + 3rem) 1.5rem 4rem; text-align: center }
+	.kd-open-icon { width: 4.5rem; height: 4.5rem; border-radius: 50% }
+	.kd-open h1 { margin: 1.25rem 0 .5rem; font-size: var(--kcc-fs-4xl) }
+	.kd-open .btn { margin: .5rem 0 2rem }
+	.kd-open .cc-help-callout { text-align: left }
+</style>
+</head>
+<body class="cc-help">
+
+<header class="kd-topbar">
+	<a class="kd-brand" href="../index.html#/start-here">
+		<img src="../media/app-icon.png" alt="" width="34" height="34">
+		<span>KAT Command Center</span>
+	</a>
+</header>
+
+<main class="kd-open">
+	<img class="kd-open-icon" src="../media/app-icon.png" alt="" width="72" height="72">
+	<h1 id="kdOpenTitle">Open in KAT Command Center</h1>
+	<p id="kdOpenLead">Your browser may ask permission to open KAT Command Center. Choose <strong>Open</strong>, and tick <em>Always allow</em> so it does not ask again.</p>
+	<p><a class="btn btn-primary" id="kdOpenButton" href="#" hidden>Open in KAT Command Center</a></p>
+	<div class="cc-help-callout" id="kdOpenHelp">
+		<strong>Nothing opened?</strong>
+		KAT Command Center must be installed on this computer and updated to a version that supports shared links. Start it once, then use the button above. <a href="../index.html#/work-items/share-link">About shared links</a>
+	</div>
+</main>
+
+<noscript><p style="padding:80px 24px">This page needs JavaScript to open KAT Command Center.</p></noscript>
+
+<!-- Plain script, not a module: like the rest of the site, it must also open from file://. -->
+<script>
+	(function () {
+		var raw = new URLSearchParams( location.search ).get( 'workitem' );
+		var id = /^[0-9]{1,9}$/.test( raw || '' ) ? parseInt( raw, 10 ) : 0;
+		if ( !id ) {
+			document.getElementById( 'kdOpenTitle' ).textContent = 'This link is incomplete';
+			document.getElementById( 'kdOpenLead' ).textContent = 'It does not name a work item. Ask the sender to share it again from KAT Command Center.';
+			document.getElementById( 'kdOpenHelp' ).hidden = true;
+			return;
+		}
+
+		var url = 'kcc://workitem/' + id;
+		document.getElementById( 'kdOpenTitle' ).textContent = 'Open work item #' + id;
+		var button = document.getElementById( 'kdOpenButton' );
+		button.setAttribute( 'href', url );
+		button.hidden = false;
+		location.href = url;
+	})();
+</script>
+</body>
+</html>
