@@ -120,6 +120,13 @@
 			"date": "2026-11-16",
 			"theme": "OE Schedule adds an opt-in enrollment calendar, RBLe Balancer gains CPU history and clearer per-node load, Site Scope gets status filter chips and clearer alerts, and Work Items and Repository Status gain control over What's Happening.",
 			"sha256": "2E554D5AFC516501BF1D9A58C51A204801E60288404488F05711B90A63083FC7"
+		},
+		{
+			"version": "3.2.1",
+			"date": "2026-11-17",
+			"theme": "Maintenance release with no user-visible changes.",
+			"maintenance": true,
+			"sha256": "AE341B4A4269407B42DDC705B06B4AF09B1B2529BB5F663EFE82A09A1CD7870C"
 		}
 	]
 }

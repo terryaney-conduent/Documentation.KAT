@@ -3483,6 +3483,21 @@ rbl-config {
   font: 400 var(--kcc-fs-body)/1 var(--kcc-font-system-icon);
 }
 
+.kcc-striped,
+.kcc-striped-row > * {
+  position: relative;
+}
+
+.kcc-striped::before,
+.kcc-striped-row > *::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: repeating-linear-gradient(135deg, transparent 0 10px, color-mix(in srgb, var(--kcc-muted) 10%, transparent) 10px 12px) fixed;
+}
+
 .btn {
   --bs-btn-color: var(--kcc-muted);
   --bs-btn-bg: var(--kcc-raised);
@@ -5756,6 +5771,20 @@ label:has(> :is(input[type=checkbox], input[type=radio]):not(:disabled)) {
 .kcc-legend-ico {
   display: inline-block;
   width: 1rem;
+}
+
+.kcc-chart-tooltip {
+  --bs-tooltip-max-width: min(36rem, calc(100vw - var(--kcc-space-6)));
+}
+
+.kcc-chart-tooltip .tooltip-inner {
+  font-size: var(--kcc-fs-xs);
+}
+
+.kcc-chart-tooltip .kcc-chart-tooltip-content {
+  max-height: max(0px, min(20rem, 50vh - var(--kcc-space-6), var(--kcc-chart-tooltip-room, 100vh) - var(--kcc-space-6)));
+  overflow-wrap: anywhere;
+  overscroll-behavior: contain;
 }
 
 .kcc-commits-wi {
