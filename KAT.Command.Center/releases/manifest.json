@@ -133,6 +133,13 @@
 			"date": "2026-11-17",
 			"theme": "Work Items can share a link that opens a work item straight into KAT Command Center.",
 			"sha256": "4390C8E500ABF36DED071ABE95B731917CA98D0E6F2A0639847E25B2420ED9D2"
+		},
+		{
+			"version": "3.2.3",
+			"date": "2026-11-17",
+			"theme": "Maintenance release with no user-visible changes.",
+			"maintenance": true,
+			"sha256": "3908B4F40A878AAEB7452DEA2D33F14D20B8A290967CB1216F974FFDA6414C2F"
 		}
 	]
 }

@@ -3525,6 +3525,20 @@ rbl-config {
   min-height: var(--kcc-control-size);
 }
 
+.kcc-update-button {
+  justify-content: flex-start;
+  gap: var(--kcc-space-2);
+  text-align: left;
+  display: flex;
+  margin-bottom: var(--kcc-space-2);
+  padding: var(--kcc-space-2);
+}
+
+.kcc-update-button svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
 .btn:hover {
   text-decoration: none;
 }
@@ -6199,20 +6213,6 @@ label:has(> :is(input[type=checkbox], input[type=radio]):not(:disabled)) {
   }
 }
 
-.kcc-sh-nav-update {
-  justify-content: flex-start;
-  gap: var(--kcc-space-2);
-  text-align: left;
-  display: flex;
-  margin-bottom: var(--kcc-space-2);
-  padding: var(--kcc-space-2);
-}
-
-.kcc-sh-nav-update svg {
-  width: 0.95rem;
-  height: 0.95rem;
-}
-
 .kcc-sh-nav-scope {
   display: flex;
   flex-direction: column;
@@ -6267,7 +6267,7 @@ label:has(> :is(input[type=checkbox], input[type=radio]):not(:disabled)) {
   display: none;
 }
 
-.kcc-sh-root[data-nav=icons] .kcc-sh-nav :is(.kcc-sh-nav-label, .kcc-sh-nav-fill, .kcc-sh-nav-caret, .kcc-sh-nav-scope, .kcc-sh-nav-update, .kcc-sh-nav-pulse) {
+.kcc-sh-root[data-nav=icons] .kcc-sh-nav :is(.kcc-sh-nav-label, .kcc-sh-nav-fill, .kcc-sh-nav-caret, .kcc-sh-nav-scope, .kcc-sh-nav-pulse) {
   display: none;
 }
 
