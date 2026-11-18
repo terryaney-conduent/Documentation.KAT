@@ -140,6 +140,13 @@
 			"theme": "Maintenance release with no user-visible changes.",
 			"maintenance": true,
 			"sha256": "3908B4F40A878AAEB7452DEA2D33F14D20B8A290967CB1216F974FFDA6414C2F"
+		},
+		{
+			"version": "3.2.4",
+			"date": "2026-11-17",
+			"theme": "Maintenance release with no user-visible changes.",
+			"maintenance": true,
+			"sha256": "8F5526A8A13C248F7CCBF0A892FE3D4EE5625D70033783FF4D5EEC7356393C79"
 		}
 	]
 }
