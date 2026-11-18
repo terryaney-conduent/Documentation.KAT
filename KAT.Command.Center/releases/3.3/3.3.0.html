@@ -1,0 +1,32 @@
+<section data-kind="story">
+	<h3>Cleaning up your Work Item lists</h3>
+	<p>Task comments now support <code>@mentions</code>. Type <code>@</code> in the Comment field to open the people picker, then search for and select the teammate you want to mention. See <a href="#/work-items/comment-markdown">what you can do in task comments</a>.</p>
+	<figure>
+		<img src="media/releases/3.3.0/work-item-mentions.webp" alt="Task modal with the people picker open after typing @ in the Comment field." width="1155" height="804">
+	</figure>
+
+	<p>Back in <a href="#/work-items/query-results">Work Item Query results</a>, here's what changed:</p>
+	<figure>
+		<img src="media/releases/3.3.0/work-item-improvements.webp" alt="Work Item query results with five numbered callouts for the action bar, create button, filter, follow controls, and Share KCC Link." width="1074" height="622">
+	</figure>
+	<ol>
+		<li><strong>A consistent action bar.</strong> Return Triaged, View Query in TFS, Refresh, and Help stay visible as icon buttons instead of moving into an overflow menu when the window narrows.</li>
+		<li><strong>Create Work Item stays beside the filter.</strong> The <strong>+</strong> button is always just to the left of the filter box.</li>
+		<li><strong>One box for filtering and task lookup.</strong> Type <code>@follow</code> to show only items you follow in the current query. To look up a task by ID, even if it's outside the current query, type <code>#1234567</code> and press <kbd>Enter</kbd>. This replaces the separate Task ID Lookup control.</li>
+		<li><strong>Follow or unfollow a task.</strong> Use <strong>Follow</strong> or <strong>Unfollow</strong> in the row menu. The magnifying-glass icon in the State chip marks a task you follow.</li>
+		<li><strong>Share KCC links in Microsoft Teams.</strong> Use <a href="#/work-items/share-link">Share KCC Link</a> from the row menu, or press <kbd>s</kbd> on the active row. Make this your go-to for sharing work items with KAT teammates in Teams: the link opens the task in KAT Command Center. It's also available in the new-task confirmation when <strong>Confirm new work item creation</strong> is enabled in <strong>Settings &gt; Work Items</strong>.</li>
+	</ol>
+</section>
+
+<section data-kind="story">
+	<h3>Streamlining Pipeline builds and commits</h3>
+	<p>The <a href="#/release-pipeline/release-differences">Pipeline commit comparison</a> is easier to focus on, with a simpler page action bar and build controls beside the commits they affect.</p>
+	<figure>
+		<img src="media/releases/3.3.0/pipeline-commit-menu.webp" alt="Pipeline page with three numbered callouts for the From and To pickers, commit filter, and Show Pending and Queue Build controls." width="1041" height="951">
+	</figure>
+	<ol>
+		<li><strong>Choose your comparison, then refresh.</strong> The page-wide action bar now focuses on the <strong>From</strong> and <strong>To</strong> pickers, alongside Refresh and Help. Changing either picker no longer immediately calls TFS to rebuild the comparison. Instead, the affected From/To callout card gets a striped, stale appearance. Set both ends, then click the <strong>Refresh Pipeline</strong> icon to rebuild the commit differences.</li>
+		<li><strong>Find your commits quickly.</strong> Use <strong>Filter commits...</strong> to search by Git hash, creator, or comment. When reviewing whether a release is ready for a particular environment, filter to your commits to quickly inspect what the comparison includes. Repositories with no matches disappear; with Show Pending on, empty release and Needs Build groups disappear too.</li>
+		<li><strong>Build controls live beside the commits.</strong> <strong>Show Pending</strong> and <strong>Queue Build</strong> now sit on the right of the Commits bar. As before, Show Pending appears only when there is pending work: commits awaiting a TFS build, unreleased commits, or newer release candidates. Queue Build is enabled when there are <strong>Needs Build</strong> commits or the latest build attempt failed, regardless of the filter or whether pending commits are shown.</li>
+	</ol>
+</section>

@@ -5,14 +5,14 @@
 </header>
 
 <h2 id="task-lookup">Look up a Task by ID</h2>
-<p>Easiest way to use KAT Command Center's Work Item's capability is via task lookup. Select <strong>Work Items</strong> in the rail; the lookup is at the right of its header whichever query is open.</p>
+<p>Select <strong>Work Items</strong> in the rail. The <strong>Lookup Task ID or Filter Current Query...</strong> input below the query name also looks up work items outside the current query.</p>
 
 <figure class="cc-help-shot">
 	<img src="media/work-items-header.webp" alt="Work Items section head with the query name, item count and indicator chips on the left, and Task ID Search, Create New, Return Triaged, View Query In TFS, refresh and Help on the right, above the filter box and the Tags picker." width="1382" height="80" loading="lazy">
 </figure>
 <ol class="cc-help-workflow">
-	<li>Enter a positive numeric ID in <strong>Task ID Search</strong>.</li>
-	<li>Press Enter or click the magnifying glass.</li>
+	<li>Enter a 7-9 digit ID, with or without a leading <code>#</code>, in the filter input.</li>
+	<li>Press Enter. The input is disabled while the lookup runs and clears when the Work Item Detail viewer opens successfully. A not-found or error message leaves the input unchanged.</li>
 	<li>Review description, fields, history, attachments, and actions in the <a href="#/work-items/work-item-detail">Work Item Detail</a> viewer.</li>
 </ol>
 
@@ -45,12 +45,13 @@
 </figure>
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
-	<li>The open query's own actions - <strong>Return Triaged</strong> (see below) and <strong>View Query In TFS</strong> - sit in the header beside the lookup, and its filter box and <strong>Tags</strong> picker sit on the row beneath. In a narrow window the lookup and those actions move into the header's <strong>⋯</strong> menu.</li>
+	<li>The header always shows icon-only buttons for <strong>Return Triaged</strong> (see below), <strong>View Query In TFS</strong>, refresh and Help. The <strong>+</strong> button before the filter opens <strong>Create New Work Item</strong>. These controls remain visible in narrow windows; there is no header overflow menu. The filter fills the space beside <strong>Tags</strong> and, in card view, <strong>Sort</strong>; these controls stack when necessary.</li>
 	<li><strong>Indicator chips filter.</strong> Click a chip beside the item count to show only the items it counts; click it again to stop. Several chips together show items matching <em>any</em> of them, and combined with the Tags picker and the filter box, rows must match <em>all</em> of them. A chip whose count drops to zero stops filtering. Each query keeps its own filter text, tags, chips and sort, so switching back to a query brings them back.</li>
 	<li>A query set to <strong>Hide query when no work items present</strong> is left out of the rail while it is empty, unless it is the query you have open.</li>
 	<li>The header's ↻ re-runs every query at once (<code>Ctrl+Shift+W</code>); <code>Ctrl+Shift+Q</code> re-runs just the open one.</li>
 	<li>Each row's <strong>⋯</strong> button, before its ID, opens a menu of direct actions on that work item. Sort by clicking column headings.</li>
-	<li>Quick filter - a case-insensitive <em>contains</em> match across the title, description, tags, assignee, assigned by, and comments. Descriptions and comments are <em>not</em> in the original query - they are fetched in the background once the grid is on screen. While that is still running, typing in the filter shows a note saying which fields are not being searched yet.</li>
+	<li>Quick filter - a case-insensitive <em>contains</em> match across the ID (with or without <code>#</code>), title, description, tags, assignee, assigned by, and comments. Typing filters the current query; pressing Enter on a 7-9 digit ID looks it up in TFS. Descriptions and comments are <em>not</em> in the original query - they are fetched in the background once the grid is on screen. While that is still running, typing in the filter shows a note saying which fields are not being searched yet.</li>
+	<li>Put <code>@follow</code> in the filter to show only work items you follow in the current query. It is case-insensitive and must be a separate word. Combine it with search text (for example, <code>@follow login</code>), tags and indicator chips to narrow the results further. It updates when you follow or unfollow an item; <code>@follow</code> alone does not search comments or show the comments-loading note.</li>
 	<li>The <strong>Tags</strong> picker lists every tag in the query with how many items carry it, KAT tags first. Tick several to show items carrying <em>any</em> of them, or choose <em>All</em> for items with any tag or <em>Missing</em> for items with none.</li>
 	<li>'Click to copy' work item IDs to easily share/commit</li>
 	<li><strong>Assigned By</strong> names whoever handed the item over - or the person who created it if it was never reassigned. It answers "who is waiting on me for this".</li>
@@ -68,7 +69,8 @@
 <ol class="cc-help-workflow compact">
 	<li>'Click to copy' ID and Title to easily share or use in commit comments and messages/emails</li>
 	<li>The banner carries who has it and how it got there - <em>Assigned To</em>, <em>Assigned By</em>, <em>Created By</em> and when it last changed - then the classification it was filed under: <em>Type / State</em>, <em>Priority / Severity</em>, and its tags.</li>
-	<li>The header's <strong>⋯</strong> menu holds <em>Edit Task</em>, <em>Triage</em>, <em>Return Task</em> and <em>Close Task</em>, then <em>View in TFS</em>, <em>Copy Link</em> and <em>Copy ID</em>, and, below a divider, <em>Share KCC Link</em> (see <a href="#/work-items/share-link">Share a work item</a>). The row's <strong>⋯</strong> menu has the same actions.</li>
+	<li>The header's <strong>⋯</strong> menu holds <em>Edit Task</em>, <em>Triage</em>, <em>Return Task</em> and <em>Close Task</em>, then <em>Follow</em>/<em>Unfollow</em>, <em>View in TFS</em>, <em>Copy Link</em> and <em>Copy ID</em>, and, below a divider, <em>Share KCC Link</em> (see <a href="#/work-items/share-link">Share a work item</a>). The row's <strong>⋯</strong> menu has the same actions.</li>
+	<li><em>Follow</em> subscribes your signed-in TFS account to the work item; <em>Unfollow</em> removes that subscription. A magnifying glass before the State marks a followed item in the table, cards and detail. Press <code>f</code> on a focused row or in the detail to toggle it. The icon changes only after TFS confirms success; if status cannot be read, use <em>Refresh follow status</em> before retrying.</li>
 	<li>Attachment chips enable file download. If a task tag matches a spec sheet attachment, it will be displayed in a separate row for easy access.</li>
 	<li>Keyboard warriors rejoice. <a href="#/keyboard-shortcuts/work-item-detail">Keyboard Shortcuts</a> provide quick access to all the actions you need to manage a work item efficiently.</li>
 	<li>Comments show newest first with who wrote them and when (hover a time for the exact date). Click a person's avatar to show only their comments; click them again to show everyone. <em>Newest</em>/<em>Oldest</em> flips the order. A long description or repro steps is trimmed with a <em>Show full</em> link, such as <em>Show full repro steps</em>.</li>
@@ -79,6 +81,7 @@
 
 <h2 id="share-link">Share a work item</h2>
 <p><em>Share KCC Link</em> is the last item in the <strong>⋯</strong> menu on a row and in Work Item Detail (or press <code>s</code>). It copies a link that opens that work item in KAT Command Center. Paste it into Teams or any rich-text box and it reads as <em>KCC #123456: Title</em>.</p>
+<p>After creating a work item, <em>Share KCC Link</em> is the default confirmation button. Click it or press Enter to copy the link and close the confirmation. <em>OK</em> closes without copying; <em>Share Link</em> still copies the TFS address.</p>
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
 	<li>Clicking the link opens a short page in the browser, which hands the work item to KAT Command Center. The first time, the browser asks whether to open KAT Command Center; choose to always allow it and later links open straight away.</li>
@@ -104,7 +107,7 @@
 </table>
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
-	<li>The form holds Title, Assigned To, Tags, State, Triage, Priority, Severity (Bugs only), a Comment and <a href="#/work-items/attachments">Attachments</a>. Tags offers the site's KAT tags, then the <em>Additional tags</em> from <a href="#/settings">Settings > Work Items</a> and any the item already has.</li>
+	<li>The form holds Title, Assigned To, Tags, State, Triage, Priority, Severity (Bugs only), a Comment and <a href="#/work-items/attachments">Attachments</a>. The tag picker groups <strong>Custom Tags</strong> from <em>Additional tags</em> in <a href="#/settings">Settings > Work Items</a> first, then <strong>KAT Tags</strong>, then any remaining <strong>Existing Tags</strong>, with exactly one separator between nonempty groups. Empty groups are omitted and duplicate tags appear only once. KAT prefixes are hidden in option labels, but typing <code>KAT</code> as the first search word restricts matches to KAT tags; add more text, such as <code>KAT A</code>, to narrow them. The Create form uses the same grouping.</li>
 	<li>Only the fields you change are written, together with the comment and any attachment changes, as one revision. Saving with no change and no comment simply leaves the form.</li>
 	<li>Title is always required. A field that already had a value cannot be emptied, <em>Return Task</em> needs someone in Assigned To, and <em>Close Task</em> needs a State other than the current one. Problems are marked on the field and counted beside the buttons.</li>
 	<li><em>Edit Task</em> returns to the details after saving; the other three close the detail. Opened straight from the grid, saving or cancelling closes the detail.</li>
@@ -117,6 +120,8 @@
 </ol>
 
 <h3 id="comment-markdown">Comment Markdown and pasted images</h3>
+<p>Type <code>@</code> at the start of a comment or after whitespace to open the people picker, then search by name or account. Use the arrow keys, Enter or Tab, or click a person, to insert their name and continue typing. Escape closes the picker and returns to the text; it does not discard your comment. An <code>@</code> inside an email address does not open it. This also works in new descriptions and Return Triage Tasks comments.</p>
+<p>Selected names are saved with their TFS identity and shown in blue when viewing the comment or description; the text area stays plain text. Two people with the same display name cannot be mentioned in one comment. TFS accepts the mention markup, but automatic notification delivery has not been verified on this server.</p>
 <p>Comments, the Return Triage Tasks comments and a new work item's description accept <code>**bold**</code>, <code>_italics_</code>, <code>__underline__</code>, <code>`inline code`</code>, fenced multiline code blocks, and <code>[anchor](https://example.com)</code>. Raw HTML is shown as text.</p>
 <p>In the form, <em>See supported comment markdown.</em> opens a callout with these rules; its <strong>×</strong> hides it again.</p>
 <p>In the form's comment, a Return Triage Tasks comment or a new work item's description, press <code>Ctrl+V</code> with an image on the clipboard to add it. A marker such as <code>![image-1.png](pasted:1)</code> appears where you pasted; the image is uploaded to TFS when you save and shown in its place. Delete the marker to drop the image. Images up to 4 MB are accepted. If an upload fails, nothing is saved and the form stays open so you can try again; in Return Triage Tasks only that task stays, for <em>Retry</em>. <em>Copy Comment</em> copies the text only.</p>

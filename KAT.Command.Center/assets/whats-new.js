@@ -56,7 +56,7 @@
 	function selectRange(releases, params) {
 		const list = (releases || [])
 			.map(release => ({ release, parts: parseVersion(release.version) }))
-			.filter(entry => entry.parts)
+			.filter(entry => entry.parts && (!entry.release.maintenance || entry.release.forceDocs === true))
 			.sort((a, b) => compareVersions(a.parts, b.parts));
 		const result = {
 			mode: 'empty',

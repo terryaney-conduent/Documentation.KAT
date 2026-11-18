@@ -4252,6 +4252,10 @@ rbl-config {
   stroke-linejoin: round;
 }
 
+.btn svg:has(> use[href="#kcc-i-plus"]) {
+  scale: 0.85;
+}
+
 .kcc-icon.kcc-icon--brand {
   fill: var(--kcc-brand-conduent);
   stroke: none;

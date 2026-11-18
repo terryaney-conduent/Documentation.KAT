@@ -30,6 +30,10 @@
 		},
 		{
 			"version": "3.2",
+			"frozen": true
+		},
+		{
+			"version": "3.3",
 			"frozen": false
 		}
 	],
@@ -71,20 +75,6 @@
 			"sha256": "386EC289A47976ADADB08AADFF09391CD9880FBBD4C0B8EBCF90162C832A5F40"
 		},
 		{
-			"version": "2.0.2",
-			"date": "2026-09-28",
-			"theme": "Maintenance release that softens the KCC Laver Cup dark theme.",
-			"maintenance": true,
-			"sha256": "B69FBFBFFC1DB8BC735256118D4961CC118E540943DE17B68B8FF199D4781863"
-		},
-		{
-			"version": "2.0.3",
-			"date": "2026-09-28",
-			"theme": "Final Laver tweak for court size and animation speed.",
-			"maintenance": true,
-			"sha256": "4A6A238EA149FB84C387D7C7FF268ACB5F2563879F5377BC43C15DFBD78C7801"
-		},
-		{
 			"version": "2.1.0",
 			"date": "2026-10-08",
 			"theme": "Search local folders with Grazer, monitor and manage Git repositories from one place, and work more reliably with Work Items and service authentication.",
@@ -109,24 +99,10 @@
 			"sha256": "FD71F5B819ABA8249E09B708A0F44B85921E7E8B1CEB8D4EEC47C48CE1C328FC"
 		},
 		{
-			"version": "3.1.1",
-			"date": "2026-11-15",
-			"theme": "Maintenance release that fixes the old window staying open after installing an update.",
-			"maintenance": true,
-			"sha256": "CF7E7BA4320AE12924843BA682588A4EEC0ACBFAE9317A9114523645F56161E9"
-		},
-		{
 			"version": "3.2.0",
 			"date": "2026-11-16",
 			"theme": "OE Schedule adds an opt-in enrollment calendar, RBLe Balancer gains CPU history and clearer per-node load, Site Scope gets status filter chips and clearer alerts, and Work Items and Repository Status gain control over What's Happening.",
 			"sha256": "2E554D5AFC516501BF1D9A58C51A204801E60288404488F05711B90A63083FC7"
-		},
-		{
-			"version": "3.2.1",
-			"date": "2026-11-17",
-			"theme": "Maintenance release with no user-visible changes.",
-			"maintenance": true,
-			"sha256": "AE341B4A4269407B42DDC705B06B4AF09B1B2529BB5F663EFE82A09A1CD7870C"
 		},
 		{
 			"version": "3.2.2",
@@ -135,18 +111,10 @@
 			"sha256": "4390C8E500ABF36DED071ABE95B731917CA98D0E6F2A0639847E25B2420ED9D2"
 		},
 		{
-			"version": "3.2.3",
-			"date": "2026-11-17",
-			"theme": "Maintenance release with no user-visible changes.",
-			"maintenance": true,
-			"sha256": "3908B4F40A878AAEB7452DEA2D33F14D20B8A290967CB1216F974FFDA6414C2F"
-		},
-		{
-			"version": "3.2.4",
-			"date": "2026-11-17",
-			"theme": "Maintenance release with no user-visible changes.",
-			"maintenance": true,
-			"sha256": "8F5526A8A13C248F7CCBF0A892FE3D4EE5625D70033783FF4D5EEC7356393C79"
+			"version": "3.3.0",
+			"date": "2026-11-18",
+			"theme": "Work Items streamlines task collaboration, while Pipeline simplifies release comparisons, commit filtering, and build actions.",
+			"sha256": "C884EB274E9BA457F41012C3E26E5F8035DA68E8F628C9DE39B5C1142244AF67"
 		}
 	]
 }

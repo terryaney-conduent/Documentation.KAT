@@ -14,7 +14,8 @@
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
 	<li>View and manage all active releases for a Site or API</li>
-	<li>Queue new builds; on success, triggers a new release generation</li>
+	<li><b>Queue Build</b> in the <b>Commits</b> bar is enabled when the loaded data includes <b>Needs Build</b> commits, even if Show Pending is off or a filter hides them, or when the newest build row failed. Otherwise its tooltip says no pending commits need a build. A successful build triggers a new release generation.</li>
+	<li>Click a failed build chip to open the <b>Queue Build</b> confirmation, even when there are no unbuilt commits. Its tooltip offers to queue a new build.</li>
 	<li>Hover over environment chips to see their state, who triggered, approved, or rejected it and when each environment state occurred</li>
 	<li>Stale release cleanup; automatically removes outdated, unfinished releases to keep the pipeline clean or manually delete completed and covered releases</li>
 	<li>See the commits each release carries; see <a href="#/release-pipeline/release-differences">Release Differences</a></li>
@@ -196,21 +197,22 @@
 </table>
 
 <h2 id="release-differences">Release Differences</h2>
-<p>Below the release cards, the page lists every commit between the <b>To</b> release and the <b>From</b> release, grouped by repository. The sample below has <b>Show Pending</b> turned on, so work newer than <b>From</b> is listed above it, one group per origin, newest first: <b>Needs build</b> for commits newer than the latest successful build, <b>New</b> for commits that are built but not yet in any release, and one group per release newer than <b>From</b>. With Show Pending off, only the commits between <b>To</b> and <b>From</b> are shown.</p>
+<p>Below the release cards, the <b>Commits</b> bar introduces every commit between the <b>To</b> release and the <b>From</b> release, grouped by repository. The sample below has <b>Show Pending</b> turned on, so work newer than <b>From</b> is listed above it, one group per origin, newest first: <b>Needs Build</b> for commits newer than the latest successful build, <b>New</b> for commits that are built but not yet in any release, and one group per release newer than <b>From</b>. With Show Pending off, only the commits between <b>To</b> and <b>From</b> are shown.</p>
 
 <figure class="cc-help-shot">
-	<img src="media/release-differences.webp" alt="Pipeline page with Show Pending turned on: the From and To release cards, then commit groups for Needs build, New, two pending releases and the From release, each split by repository." width="1482" height="1060" loading="lazy">
+	<img src="media/release-differences.webp" alt="Pipeline page with Show Pending turned on: the From and To release cards, then commit groups for Needs Build, New, two pending releases and the From release, each split by repository." width="1482" height="1060" loading="lazy">
 </figure>
 
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
 	<li>See commits across <b>all repositories required to build the site or API</b> to be included in the current release (not just commits isolated to the site or API repository)</li>
 	<li>Uses the same <b>From</b> and <b>To</b> as the rest of the page; see <a href="#/release-pipeline/from-to-detection">From and To Detection</a>.</li>
-	<li><b>Show Pending</b> in the page head appears when there is pending work. It shows release candidates newer than the current <b>From</b> release and commits that have not been published yet; click it again (<b>Hide Pending</b>) to return to the plain comparison.</li>
+	<li><b>Filter commits...</b> matches any part of the full Git hash, creator, or full comment, ignoring case. Repositories with no matches disappear; with <b>Show Pending</b> on, empty release groups and <b>Needs Build</b> disappear too. Clear the input to restore them.</li>
+	<li><b>Show Pending</b> on the right of the <b>Commits</b> bar appears when there is pending work, followed by <b>Queue Build</b>. It shows release candidates newer than the current <b>From</b> release and commits that have not been published yet; click it again (<b>Hide Pending</b>) to return to the plain comparison. At narrow widths these buttons show icons with tooltips.</li>
 	<li>View any commit on TFS via the commit hash link.</li>
 	<li>Open an associated work item via the <code>#work-item</code> reference in a commit comment.</li>
 	<li>Read the complete commit comment with the details button when the comment has more lines or is cut off.</li>
-	<li>Collapse anything you have finished with: the chevron on a <b>repository header</b> folds that repository's commits away, and with <b>Show Pending</b> on, the chevron on a <b>release group</b> folds the whole release. Headers stay put while you scroll.</li>
+	<li>Collapse anything you have finished with: the chevron on a <b>repository header</b> folds that repository's commits away, and with <b>Show Pending</b> on, the chevron on a <b>release group</b> folds the whole release. The <b>Commits</b> bar sticks beneath the page header; release and repository headers stick beneath it.</li>
 	<li>Click a repository on the Dashboard's <b>Releases · Pipeline</b> tile to jump straight to its commits here.</li>
 	<li>Commits waiting for a build are also surfaced in <a href="#/reading-dashboard/whats-happening">What's Happening</a>.</li>
 </ol>
