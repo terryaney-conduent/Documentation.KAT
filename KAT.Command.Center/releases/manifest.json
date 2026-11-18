@@ -115,6 +115,12 @@
 			"date": "2026-11-18",
 			"theme": "Work Items streamlines task collaboration, while Pipeline simplifies release comparisons, commit filtering, and build actions.",
 			"sha256": "C884EB274E9BA457F41012C3E26E5F8035DA68E8F628C9DE39B5C1142244AF67"
+		},
+		{
+			"version": "3.3.1",
+			"date": "2026-11-18",
+			"theme": "Work Item query results stay put while you work, and each query opens with its own default sort.",
+			"sha256": "B691B4FD5DDF6C17A0E5002B3F3D52E2195A1A72DF26BC05A669B59065809247"
 		}
 	]
 }
