@@ -5772,6 +5772,40 @@ label:has(> :is(input[type=checkbox], input[type=radio]):not(:disabled)) {
   text-decoration: none;
 }
 
+.kaModal.kcc-commit-details .modal-body .kcc-commit-details-review {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.kaModal.kcc-commit-details .modal-body .kcc-commit-details-review > * {
+  flex: none;
+}
+
+.kaModal.kcc-commit-details .modal-body .kcc-commit-details-review .kcc-commit-details-files {
+  flex: 0 1 auto;
+  max-height: none;
+  min-height: calc(4.5em + 2 * var(--kcc-space-1) + 2 * var(--bs-border-width));
+}
+
+.kaModal.kcc-commit-details .modal-body .kcc-commit-details-review .kcc-commit-details-files.kcc-is-short {
+  flex: none;
+  min-height: 0;
+}
+
+.kcc-commit-details-comment {
+  height: calc(4lh + 2 * var(--bs-border-width) + 0.75rem);
+  overflow: auto;
+  white-space: pre;
+  overflow-wrap: normal;
+}
+
+[data-theme=light] .kaModal.kcc-commit-details {
+  --kcc-surface: var(--bs-white);
+  --kcc-raised: var(--bs-white);
+}
+
 .kcc-is-missing :is(.kcc-commits-author, .kcc-commits-msg) {
   color: var(--kcc-danger);
   font-style: italic;
@@ -5929,7 +5963,7 @@ label:has(> :is(input[type=checkbox], input[type=radio]):not(:disabled)) {
   overflow-x: clip;
 }
 
-.kcc-modal-action .modal-footer-buttons {
+:is(.kcc-modal-action, .kcc-commit-details) .modal-footer-buttons {
   display: flex;
   flex: 1 1 auto;
   align-items: center;
