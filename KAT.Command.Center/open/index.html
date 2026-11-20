@@ -26,7 +26,7 @@
 	.kd-open { max-width: 36rem; margin: 0 auto; padding: calc(var(--kd-topbar-h) + 3rem) 1.5rem 4rem; text-align: center }
 	.kd-open-icon { width: 4.5rem; height: 4.5rem; border-radius: 50% }
 	.kd-open h1 { margin: 1.25rem 0 .5rem; font-size: var(--kcc-fs-4xl) }
-	.kd-open .btn { margin: .5rem 0 2rem }
+	.kcc-open-actions:not([hidden]) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; max-width: 24rem; margin: 1.5rem auto }
 	.kd-open .cc-help-callout { text-align: left }
 </style>
 </head>
@@ -42,11 +42,15 @@
 <main class="kd-open">
 	<img class="kd-open-icon" src="../media/app-icon.png" alt="" width="72" height="72">
 	<h1 id="kdOpenTitle">Open in KAT Command Center</h1>
-	<p id="kdOpenLead">Your browser may ask permission to open KAT Command Center. Choose <strong>Open</strong>, and tick <em>Always allow</em> so it does not ask again.</p>
-	<p><a class="btn btn-primary" id="kdOpenButton" href="#" hidden>Open in KAT Command Center</a></p>
+	<p id="kdOpenLead">Your browser may ask permission to open KAT Command Center. Choose <strong>Open</strong>, and tick <em>Always allow</em> so it does not ask again. Once the work item opens, use the button below to close this page.</p>
+	<div class="kcc-open-actions" id="kccOpenActions" hidden>
+		<a class="btn btn-outline-success btn-lg" id="kdOpenButton" href="#">Open in KCC</a>
+		<button class="btn btn-primary btn-lg" id="kdCloseButton" type="button">Close this Tab</button>
+	</div>
+	<p class="text-body-secondary" id="kdCloseHelp" role="status" hidden>Your browser did not allow this page to close itself. Close the tab using your browser controls.</p>
 	<div class="cc-help-callout" id="kdOpenHelp">
 		<strong>Nothing opened?</strong>
-		KAT Command Center must be installed on this computer and updated to a version that supports shared links. Start it once, then use the button above. <a href="../index.html#/work-items/share-link">About shared links</a>
+		KAT Command Center must be installed on this computer and updated to a version that supports shared links. Start it once, then select <strong>Open in KCC</strong>. <a href="../index.html#/work-items/share-link">About shared links</a>
 	</div>
 </main>
 
@@ -67,8 +71,16 @@
 		var url = 'kcc://workitem/' + id;
 		document.getElementById( 'kdOpenTitle' ).textContent = 'Open work item #' + id;
 		var button = document.getElementById( 'kdOpenButton' );
+		var closeButton = document.getElementById( 'kdCloseButton' );
+		var closeHelp = document.getElementById( 'kdCloseHelp' );
 		button.setAttribute( 'href', url );
-		button.hidden = false;
+		document.getElementById( 'kccOpenActions' ).hidden = false;
+		closeButton.addEventListener( 'click', function () {
+			window.close();
+			window.setTimeout( function () {
+				if ( !window.closed ) closeHelp.hidden = false;
+			}, 250 );
+		} );
 		location.href = url;
 	})();
 </script>

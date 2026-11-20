@@ -391,7 +391,11 @@
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Admin source folder</div>
-		<div class="cc-help-legend-copy">Under <em>Job Assemblies</em>. Where Create starts browsing for a job assembly. Required; default <code>C:\BTR\Evolution\Websites\Admin</code>.</div>
+		<div class="cc-help-legend-copy">Under <em>Job Assemblies</em>. Where Create starts browsing for a job assembly. The selected site's <code>bin</code> DLL supplies job discovery, and that site supplies XML files and <code>Web.config</code>. Required; default <code>C:\BTR\Evolution\Websites\Admin</code>.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Release assemblies folder</div>
+		<div class="cc-help-legend-copy">Under <em>Job Assemblies</em>. A flat folder of released <code>Administration.{Client}.dll</code> files. Starts blank; configure it before creating or editing a job. The selected source DLL must have a matching file here, and the package includes this released DLL, never the source copy. Configuration files still come from the selected source site.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Confirm Trigger</div>

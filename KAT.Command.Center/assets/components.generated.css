@@ -5003,6 +5003,15 @@ svg.kcc-ctx-ico {
   box-shadow: none;
 }
 
+.btn.kcc-copy-link {
+  --bs-btn-hover-color: var(--bs-info);
+}
+
+.btn.kcc-copy-link > svg {
+  width: var(--kcc-fs-sm);
+  height: var(--kcc-fs-sm);
+}
+
 .kcc-copy-indicator {
   display: none;
   position: absolute;
@@ -5051,8 +5060,13 @@ label:has(> :is(input[type=checkbox], input[type=radio]):not(:disabled)) {
   cursor: pointer;
 }
 
-.form-label:has(+ :is(.form-control, .form-select):disabled) {
+.form-label:has(+ :is(.form-control, .form-select):disabled),
+label:not(.form-switch):has(> :is(input[type=checkbox], input[type=radio]):disabled) {
   opacity: 0.5;
+}
+
+label:not(.form-switch) > :is(input[type=checkbox], input[type=radio]):disabled {
+  opacity: 1;
 }
 
 .kcc-filter-input {
